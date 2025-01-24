@@ -14,7 +14,7 @@ namespace Sena_TimeHub.datos
         public clConexion()
         {
 
-            con = new SqlConnection("Data Source=.;Initial Catalog=dbProyecto2;Integrated Security=True;");
+            con = new SqlConnection("Data Source=.;Initial Catalog=dbSenaTimeHub;Integrated Security=True;");
 
         }
         public SqlConnection mtdAbrirConexion()

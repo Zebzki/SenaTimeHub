@@ -15,7 +15,7 @@ namespace Sena_TimeHub.datos
             SqlConnection conect = con.mtdAbrirConexion();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("spLogin", conect))
+                using (SqlCommand cmd = new SqlCommand("spLoginUsuario", conect))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@email", oData.email);

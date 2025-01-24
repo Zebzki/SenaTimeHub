@@ -12,6 +12,7 @@ namespace Sena_TimeHub.vista
         {
             if (!IsPostBack)
             {
+
                 if (Session["usuario"] != null && Session["rol"] != null)
                 {
                     string rol = Session["rol"].ToString();
@@ -20,12 +21,26 @@ namespace Sena_TimeHub.vista
                 }
                 else
                 {
-                    Response.Redirect("error.aspx");
+                    if (Session["aprendiz"] != null)
+                    {
+                        menuAprendiz();
+                        lblUsuario.Text = "Bienvenido" + Session["aprendiz"];
+                    }
+                    else
+                    {
+                        Response.Redirect("error.aspx");
+
+                    }
                 }
-                
+
             }
         }
-
+        private void menuAprendiz()
+        {
+            StringBuilder menuAprendiz = new StringBuilder();
+            menuAprendiz.Append(AprendizMenu());
+            navMenu.InnerHtml = menuAprendiz.ToString();
+        }
         private void GenerarMenu(string rol)
         {
             StringBuilder menuHtml = new StringBuilder();
@@ -41,9 +56,7 @@ namespace Sena_TimeHub.vista
                 case "ApoyoCoordinacion":
                     menuHtml.Append(ApoyoCoordinacionMenu());
                     break;
-                case "Aprendiz":
-                    menuHtml.Append(AprendizMenu());
-                    break;
+
 
             }
 
@@ -217,10 +230,11 @@ namespace Sena_TimeHub.vista
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Session["usuario"] = null;
+            Session["aprendiz"] = null;
             Session["rol"] = null;
             Response.Redirect("../index.aspx");
         }
 
-      
+
     }
 }

@@ -202,6 +202,7 @@
     <Compile Include="datos\clActualizarCoordinacionD.cs" />
     <Compile Include="datos\clActualizarInstructorD.cs" />
     <Compile Include="datos\clActualizarSedeD.cs" />
+    <Compile Include="datos\clAprendizD.cs" />
     <Compile Include="datos\clConexion.cs" />
     <Compile Include="datos\clEditarAprendiz.cs" />
     <Compile Include="datos\clEliminarAprendices.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="datos\clRegistroCoordinacionD.cs" />
     <Compile Include="datos\clUsuarioD.cs" />
     <Compile Include="entidades\clAmbienteE.cs" />
+    <Compile Include="entidades\clAprendizE.cs" />
     <Compile Include="entidades\clArea.cs" />
     <Compile Include="entidades\clFichaE.cs" />
     <Compile Include="entidades\clProgramaE.cs" />
@@ -241,6 +243,7 @@
     <Compile Include="logica\clActualizarCoordinacionL.cs" />
     <Compile Include="logica\clActualizarInstructorL.cs" />
     <Compile Include="logica\clActualizarSedeL.cs" />
+    <Compile Include="logica\clAprendizL.cs" />
     <Compile Include="logica\clEditarAprendizL.cs" />
     <Compile Include="logica\clEliminarAprendizL.cs" />
     <Compile Include="logica\clEliminarSedeL.cs" />

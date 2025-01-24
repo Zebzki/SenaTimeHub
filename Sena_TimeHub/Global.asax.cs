@@ -52,6 +52,7 @@ namespace Sena_TimeHub
         protected void Session_End(object sender, EventArgs e)
         {
             Session["usuario"] = null;
+            Session["aprendiz"] = null;
             Session["rol"] = null ;
             Session["idUsuario"] = null;
             Session["autenticacion"] = "";
