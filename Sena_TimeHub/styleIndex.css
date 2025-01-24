@@ -1,0 +1,99 @@
+﻿@import url('styleindex.css'); /* Importa tu archivo CSS principal */
+
+/* Estilo general del body */
+body {
+    background-image: url('icons/cimm2.jpg');
+  
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center top !important; 
+    background-color: #f5f5f5; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; /* Fuente principal */
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+
+.container-fluid {
+    background-color: transparent; 
+}
+
+.navbar-dark .navbar-brand {
+    font-size: 30px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 18px;
+}
+
+
+.navbar-line {
+    height: 4px;
+    background-color: rgb(25, 169, 212); 
+    width: 100%;
+}
+
+
+.logo {
+    width: 150px;
+    margin-right: 10px;
+}
+
+
+.main-content {
+    padding: 20px; /* Espaciado interno */
+    background-color: #28a745; /* Color de fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para efecto visual */
+}
+
+/* Footer */
+footer {
+    background-color: #28a745; /* Fondo del footer */
+    color: white; /* Texto blanco */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Centrado del texto */
+}
+
+    footer a {
+        color: white; /* Links en blanco */
+        text-decoration: none; /* Sin subrayado */
+    }
+
+        footer a:hover {
+            text-decoration: underline; /* Subrayado al pasar el cursor */
+        }
+
+/* Estilo de las imágenes del carrusel */
+.carousel-inner img {
+    width: 100%; /* Ancho completo */
+    height: 400px; /* Altura fija */
+    object-fit: cover; /* Escala la imagen para llenar el contenedor */
+}
+
+/* Media queries para dispositivos pequeños */
+@media (max-width: 768px) {
+    body {
+        background-size: auto 100% !important; /* Ajusta la imagen en móviles */
+    }
+
+    .navbar-dark .navbar-brand {
+        font-size: 24px; /* Reduce el tamaño de la marca */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 16px; /* Reduce el tamaño del texto del menú */
+    }
+
+    .main-content {
+        padding: 15px; /* Reduce el espaciado */
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    }
+
+    .carousel-inner img {
+        height: auto; /* Ajusta la altura del carrusel en móviles */
+    }
+
+    
+}

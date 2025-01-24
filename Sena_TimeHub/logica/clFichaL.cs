@@ -1,0 +1,36 @@
+﻿using Sena_TimeHub.datos;
+using Sena_TimeHub.entidades;
+using System;
+using System.Collections.Generic;
+using System.Data;
+
+namespace Sena_TimeHub.logica
+{
+    public class clFichaL
+    {
+        
+        public bool RegistrarFichaYUsuarios(string numeroFicha, DateTime fechaInicio, DateTime fechaFinal, string jornada, int idPrograma, DataTable usuarios)
+        {
+           clFichaD oFicha = new clFichaD();    
+            return oFicha.RegistrarFicha(numeroFicha, fechaInicio, fechaFinal, jornada, idPrograma, usuarios);
+        }
+        public DataTable CrearTablaUsuarios()
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("nombre", typeof(string));
+            table.Columns.Add("apellido", typeof(string));
+            table.Columns.Add("tipoDocumento", typeof(string));
+            table.Columns.Add("documento", typeof(string));
+            table.Columns.Add("email", typeof(string));
+            table.Columns.Add("contraseña", typeof(string));
+            table.Columns.Add("idRol", typeof(int));
+
+            return table;
+        }
+        public List<clProgramaE> ObtenerProgramas()
+        {
+            clFichaD oFicha = new clFichaD();
+            return oFicha.ObtenerProgramas();
+        }
+    }
+}

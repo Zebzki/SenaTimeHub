@@ -1,0 +1,534 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8951E1DA-E45E-492C-8D1E-806D5ED258D4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sena_TimeHub</RootNamespace>
+    <AssemblyName>Sena_TimeHub</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=7.5.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.7.5.1\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=7.5.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.7.5.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=7.5.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.7.5.0\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.8.0.4\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.min.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.rtl.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-reboot.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-reboot.rtl.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-utilities.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-utilities.min.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-utilities.rtl.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap.min.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap.rtl.css" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap.rtl.min.css" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.bundle.js" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.esm.js" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.esm.min.js" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.js" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="icons\AprendizM.png" />
+    <Content Include="icons\bienestar_SENA_600.jpg" />
+    <Content Include="icons\cimm2.jpg" />
+    <Content Include="icons\Directorio-.jpg" />
+    <Content Include="icons\imagenCimm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\logoSena.png" />
+    <Content Include="icons\sena-aprendizaje-1.jpg" />
+    <Content Include="icons\senaImg.png" />
+    <Content Include="index.aspx" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-utilities.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-utilities.min.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap.min.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap.rtl.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\css\bootstrap.rtl.min.css.map" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.esm.js.map" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.esm.min.js.map" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.js.map" />
+    <Content Include="bootstrap-5.2.3-dist\js\bootstrap.min.js.map" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
+    <Content Include="styleIndex.css" />
+    <Content Include="vista\configuracion.aspx" />
+    <Content Include="vista\dashboardInstructor.aspx" />
+    <Content Include="vista\editarApoyoCoordinacion.aspx" />
+    <Content Include="vista\editarAprendiz.aspx" />
+    <Content Include="vista\editarInstructor.aspx" />
+    <Content Include="vista\editarSede.aspx" />
+    <Content Include="vista\horariosInstructor.aspx" />
+    <Content Include="vista\insertarArea.aspx" />
+    <Content Include="vista\insertarHorario.aspx" />
+    <Content Include="vista\insertarSede.aspx" />
+    <Content Include="vista\insertarAmbiente.aspx" />
+    <Content Include="vista\insertarApoyoCoordinacion.aspx" />
+    <Content Include="vista\dashboardAprendiz.aspx" />
+    <Content Include="vista\assets\img\favicon.ico" />
+    <Content Include="vista\assets\img\profile.jpg" />
+    <Content Include="vista\css\styles.css" />
+    <Content Include="vista\dashboard.aspx" />
+    <Content Include="vista\error.aspx" />
+    <Content Include="vista\forgot.aspx" />
+    <Content Include="vista\insertarAprendiz.aspx" />
+    <Content Include="vista\insertarFicha.aspx" />
+    <Content Include="vista\insertarInstructor.aspx" />
+    <Content Include="vista\insertarPrograma.aspx" />
+    <Content Include="vista\js\scripts.js" />
+    <Content Include="vista\js\styleMenu.js" />
+    <Content Include="vista\listarApoyoCoordinacion.aspx" />
+    <Content Include="vista\listarAprendices.aspx" />
+    <Content Include="vista\listarFicha.aspx" />
+    <Content Include="vista\listarInstructor.aspx" />
+    <Content Include="vista\listarAmbiente.aspx" />
+    <Content Include="vista\listarPrograma.aspx" />
+    <Content Include="vista\listarSede.aspx" />
+    <Content Include="vista\recuperarContrasena.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="datos\clActualizarContraseña.cs" />
+    <Compile Include="datos\clActualizarCoordinacionD.cs" />
+    <Compile Include="datos\clActualizarInstructorD.cs" />
+    <Compile Include="datos\clActualizarSedeD.cs" />
+    <Compile Include="datos\clConexion.cs" />
+    <Compile Include="datos\clEditarAprendiz.cs" />
+    <Compile Include="datos\clEliminarAprendices.cs" />
+    <Compile Include="datos\clEliminarCoordinacionD.cs" />
+    <Compile Include="datos\clEliminarInstructor.cs" />
+    <Compile Include="datos\clEliminarSedeD.cs" />
+    <Compile Include="datos\clFichaD.cs" />
+    <Compile Include="datos\clListarAmbienteD.cs" />
+    <Compile Include="datos\clListarAprendicesD.cs" />
+    <Compile Include="datos\clListarCoordinacionD.cs" />
+    <Compile Include="datos\clListarFichaD.cs" />
+    <Compile Include="datos\clListarInstructorD.cs" />
+    <Compile Include="datos\clListarProgramaD.cs" />
+    <Compile Include="datos\clObtenerAprendices.cs" />
+    <Compile Include="datos\clObtenerCoordinacionD.cs" />
+    <Compile Include="datos\clObtenerSedeD.cs" />
+    <Compile Include="datos\clProgramaD.cs" />
+    <Compile Include="datos\clRecuperarConstrasenaD.cs" />
+    <Compile Include="datos\clRegistrarAmbienteD.cs" />
+    <Compile Include="datos\clRegistrarAprendizD.cs" />
+    <Compile Include="datos\clRegistrarAreaD.cs" />
+    <Compile Include="datos\clRegistrarInstructorD.cs" />
+    <Compile Include="datos\clRegistrarSedeD.cs" />
+    <Compile Include="datos\clRegistroCoordinacionD.cs" />
+    <Compile Include="datos\clUsuarioD.cs" />
+    <Compile Include="entidades\clAmbienteE.cs" />
+    <Compile Include="entidades\clArea.cs" />
+    <Compile Include="entidades\clFichaE.cs" />
+    <Compile Include="entidades\clProgramaE.cs" />
+    <Compile Include="entidades\clRol.cs" />
+    <Compile Include="entidades\clSedeE.cs" />
+    <Compile Include="entidades\clUsuarioE.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="logica\clActualizarContraseñaL.cs" />
+    <Compile Include="logica\clActualizarCoordinacionL.cs" />
+    <Compile Include="logica\clActualizarInstructorL.cs" />
+    <Compile Include="logica\clActualizarSedeL.cs" />
+    <Compile Include="logica\clEditarAprendizL.cs" />
+    <Compile Include="logica\clEliminarAprendizL.cs" />
+    <Compile Include="logica\clEliminarSedeL.cs" />
+    <Compile Include="logica\clEliminarCoordinacionL.cs" />
+    <Compile Include="logica\clEliminarInstructorL.cs" />
+    <Compile Include="logica\clEnviarCorreoL.cs" />
+    <Compile Include="logica\clFichaL.cs" />
+    <Compile Include="logica\clListarAmbienteL.cs" />
+    <Compile Include="logica\clListarAprendicesL.cs" />
+    <Compile Include="logica\clListarCoordinacionL.cs" />
+    <Compile Include="logica\clListarFichaL.cs" />
+    <Compile Include="logica\clListarInstructorL.cs" />
+    <Compile Include="logica\clListarProgramaL.cs" />
+    <Compile Include="logica\clObtenerAprendicesLcs.cs" />
+    <Compile Include="logica\clObtenerCoordinacionL.cs" />
+    <Compile Include="logica\clObtenerSedeL.cs" />
+    <Compile Include="logica\clProgramaL.cs" />
+    <Compile Include="logica\clRecuperarContrasenaL.cs" />
+    <Compile Include="logica\clRegistrarAreaL.cs" />
+    <Compile Include="logica\clRegistrarSedeL.cs" />
+    <Compile Include="logica\clRegistrarInstructorL.cs" />
+    <Compile Include="logica\clRegistrarAmbienteL.cs" />
+    <Compile Include="logica\clRegistrarAprendizL.cs" />
+    <Compile Include="logica\clRegistrarCoordinacionL.cs" />
+    <Compile Include="logica\clUsuarioL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\configuracion.aspx.cs">
+      <DependentUpon>configuracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\configuracion.aspx.designer.cs">
+      <DependentUpon>configuracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\dashboardInstructor.aspx.cs">
+      <DependentUpon>dashboardInstructor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\dashboardInstructor.aspx.designer.cs">
+      <DependentUpon>dashboardInstructor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\editarApoyoCoordinacion.aspx.cs">
+      <DependentUpon>editarApoyoCoordinacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\editarApoyoCoordinacion.aspx.designer.cs">
+      <DependentUpon>editarApoyoCoordinacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\editarAprendiz.aspx.cs">
+      <DependentUpon>editarAprendiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\editarAprendiz.aspx.designer.cs">
+      <DependentUpon>editarAprendiz.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\editarInstructor.aspx.cs">
+      <DependentUpon>editarInstructor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\editarInstructor.aspx.designer.cs">
+      <DependentUpon>editarInstructor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\editarSede.aspx.cs">
+      <DependentUpon>editarSede.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\editarSede.aspx.designer.cs">
+      <DependentUpon>editarSede.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\horariosInstructor.aspx.cs">
+      <DependentUpon>horariosInstructor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\horariosInstructor.aspx.designer.cs">
+      <DependentUpon>horariosInstructor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\insertarArea.aspx.cs">
+      <DependentUpon>insertarArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\insertarArea.aspx.designer.cs">
+      <DependentUpon>insertarArea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\insertarHorario.aspx.cs">
+      <DependentUpon>insertarHorario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\insertarHorario.aspx.designer.cs">
+      <DependentUpon>insertarHorario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\insertarSede.aspx.cs">
+      <DependentUpon>insertarSede.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\insertarSede.aspx.designer.cs">
+      <DependentUpon>insertarSede.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\insertarAmbiente.aspx.cs">
+      <DependentUpon>insertarAmbiente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\insertarAmbiente.aspx.designer.cs">
+      <DependentUpon>insertarAmbiente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\insertarApoyoCoordinacion.aspx.cs">
+      <DependentUpon>insertarApoyoCoordinacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\insertarApoyoCoordinacion.aspx.designer.cs">
+      <DependentUpon>insertarApoyoCoordinacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\dashboardAprendiz.aspx.cs">
+      <DependentUpon>dashboardAprendiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\dashboardAprendiz.aspx.designer.cs">
+      <DependentUpon>dashboardAprendiz.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\forgot.aspx.cs">
+      <DependentUpon>forgot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\forgot.aspx.designer.cs">
+      <DependentUpon>forgot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\insertarAprendiz.aspx.cs">
+      <DependentUpon>insertarAprendiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\insertarAprendiz.aspx.designer.cs">
+      <DependentUpon>insertarAprendiz.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\insertarFicha.aspx.cs">
+      <DependentUpon>insertarFicha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\insertarFicha.aspx.designer.cs">
+      <DependentUpon>insertarFicha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\insertarInstructor.aspx.cs">
+      <DependentUpon>insertarInstructor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\insertarInstructor.aspx.designer.cs">
+      <DependentUpon>insertarInstructor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\insertarPrograma.aspx.cs">
+      <DependentUpon>insertarPrograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\insertarPrograma.aspx.designer.cs">
+      <DependentUpon>insertarPrograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\listarApoyoCoordinacion.aspx.cs">
+      <DependentUpon>listarApoyoCoordinacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\listarApoyoCoordinacion.aspx.designer.cs">
+      <DependentUpon>listarApoyoCoordinacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\listarAprendices.aspx.cs">
+      <DependentUpon>listarAprendices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\listarAprendices.aspx.designer.cs">
+      <DependentUpon>listarAprendices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\listarFicha.aspx.cs">
+      <DependentUpon>listarFicha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\listarFicha.aspx.designer.cs">
+      <DependentUpon>listarFicha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\listarInstructor.aspx.cs">
+      <DependentUpon>listarInstructor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\listarInstructor.aspx.designer.cs">
+      <DependentUpon>listarInstructor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\listarAmbiente.aspx.cs">
+      <DependentUpon>listarAmbiente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\listarAmbiente.aspx.designer.cs">
+      <DependentUpon>listarAmbiente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\listarPrograma.aspx.cs">
+      <DependentUpon>listarPrograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\listarPrograma.aspx.designer.cs">
+      <DependentUpon>listarPrograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\listarSede.aspx.cs">
+      <DependentUpon>listarSede.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\listarSede.aspx.designer.cs">
+      <DependentUpon>listarSede.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\master.Master.cs">
+      <DependentUpon>master.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\master.Master.designer.cs">
+      <DependentUpon>master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="vista\recuperarContrasena.aspx.cs">
+      <DependentUpon>recuperarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\recuperarContrasena.aspx.designer.cs">
+      <DependentUpon>recuperarContrasena.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="vista\master.Master" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="vista\images\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51181</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51181/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauraci�n de paquetes NuGet para descargarlos. Para obtener m�s informaci�n, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
