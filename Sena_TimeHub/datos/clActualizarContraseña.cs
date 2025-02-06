@@ -31,6 +31,7 @@ namespace Sena_TimeHub.datos
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
             }
             finally
             {
