@@ -56,6 +56,9 @@
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -210,6 +213,7 @@
     <Compile Include="datos\clEliminarInstructor.cs" />
     <Compile Include="datos\clEliminarSedeD.cs" />
     <Compile Include="datos\clFichaD.cs" />
+    <Compile Include="datos\clHorarioInstructorD.cs" />
     <Compile Include="datos\clListarAmbienteD.cs" />
     <Compile Include="datos\clListarAprendicesD.cs" />
     <Compile Include="datos\clListarCoordinacionD.cs" />
@@ -231,7 +235,9 @@
     <Compile Include="entidades\clAmbienteE.cs" />
     <Compile Include="entidades\clAprendizE.cs" />
     <Compile Include="entidades\clArea.cs" />
+    <Compile Include="entidades\clDia.cs" />
     <Compile Include="entidades\clFichaE.cs" />
+    <Compile Include="entidades\clHorario.cs" />
     <Compile Include="entidades\clProgramaE.cs" />
     <Compile Include="entidades\clRol.cs" />
     <Compile Include="entidades\clSedeE.cs" />
@@ -251,6 +257,7 @@
     <Compile Include="logica\clEliminarInstructorL.cs" />
     <Compile Include="logica\clEnviarCorreoL.cs" />
     <Compile Include="logica\clFichaL.cs" />
+    <Compile Include="logica\clHorarioInstructorL.cs" />
     <Compile Include="logica\clListarAmbienteL.cs" />
     <Compile Include="logica\clListarAprendicesL.cs" />
     <Compile Include="logica\clListarCoordinacionL.cs" />
@@ -495,6 +502,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="vista\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
