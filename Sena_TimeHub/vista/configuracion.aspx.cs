@@ -18,25 +18,51 @@ namespace Sena_TimeHub.vista
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
             clActualizarContraseñaL oActualizar = new clActualizarContraseñaL();
+
             string nuevaC = txtNewPassword.Text;
             string confirmarC = txtConfirmPassword.Text;
-            int idUsuario = Convert.ToInt32(Session["idUsuario"]);
+
+            // Validar que las contraseñas coincidan
             if (nuevaC != confirmarC)
             {
                 lblMessage.ForeColor = System.Drawing.Color.Red;
-                lblMessage.Text = "No coinciden las 2 contraseñas, revise porfavor";
+                lblMessage.Text = "Las contraseñas no coinciden, revise por favor";
+                return; // Evita seguir con la ejecución
             }
-            bool exito = oActualizar.mtdActualizarC(nuevaC,idUsuario);
-            if (exito)
+
+            int? idUsuario = Session["idUsuario"] as int?;
+            int? idAprendiz = Session["idAprendiz"] as int?;
+
+            bool exito = false;
+
+            if (idUsuario.HasValue)
             {
-                lblMessage.ForeColor = System.Drawing.Color.Aqua;
-                lblMessage.Text = "Contraseña Actualizada correctamente";
+                exito = oActualizar.mtdActualizarCU(nuevaC, idUsuario.Value);
+            }
+            else if (idAprendiz.HasValue)
+            {
+                exito = oActualizar.mtdActualizarCA(nuevaC, idAprendiz.Value);
             }
             else
             {
                 lblMessage.ForeColor = System.Drawing.Color.Red;
-                lblMessage.Text = "error al actualizar la contraseña";
+                lblMessage.Text = "Error: No se encontró un usuario o aprendiz válido.";
+                return;
             }
+
+            // Mensaje de éxito o error
+            if (exito)
+            {
+                lblMessage.ForeColor = System.Drawing.Color.Aqua;
+                lblMessage.Text = "Contraseña actualizada correctamente";
+            }
+            else
+            {
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "Error al actualizar la contraseña";
+            }
+
+
         }
     }
 }

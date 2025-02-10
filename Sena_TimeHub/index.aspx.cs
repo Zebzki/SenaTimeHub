@@ -73,7 +73,7 @@ namespace Sena_TimeHub.vista
             }
             if (oIngresoAprendiz !=null )
             {
-                
+                Session["idAprendiz"] = oIngresoAprendiz.idAprendiz;
                 Session["aprendiz"] = oIngresoAprendiz.nombreAprendiz + " " + oIngresoAprendiz.apellidoAprendiz;
                 Response.Redirect("vista/dashboardAprendiz.aspx");        
             }
