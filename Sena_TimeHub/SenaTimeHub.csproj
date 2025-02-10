@@ -214,6 +214,7 @@
     <Compile Include="datos\clEliminarSedeD.cs" />
     <Compile Include="datos\clFichaD.cs" />
     <Compile Include="datos\clHorarioInstructorD.cs" />
+    <Compile Include="datos\clInsertarHorarioD.cs" />
     <Compile Include="datos\clListarAmbienteD.cs" />
     <Compile Include="datos\clListarAprendicesD.cs" />
     <Compile Include="datos\clListarCoordinacionD.cs" />
@@ -258,6 +259,7 @@
     <Compile Include="logica\clEnviarCorreoL.cs" />
     <Compile Include="logica\clFichaL.cs" />
     <Compile Include="logica\clHorarioInstructorL.cs" />
+    <Compile Include="logica\clInsertarHorarioL.cs" />
     <Compile Include="logica\clListarAmbienteL.cs" />
     <Compile Include="logica\clListarAprendicesL.cs" />
     <Compile Include="logica\clListarCoordinacionL.cs" />

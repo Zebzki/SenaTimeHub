@@ -8,6 +8,9 @@ namespace Sena_TimeHub.entidades
     public class clHorario : clDia
     {
         public int idHorario { get; set; }
+        public int IdInstructor { get; set; }
+        public int IdFicha { get; set; }
+        public int IdAmbiente { get; set; }
         public DateTime fechaInicio { get; set; }
         public DateTime fechaFinal { get; set; }
         public TimeSpan horaInicio { get; set; }
