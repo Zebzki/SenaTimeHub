@@ -8,14 +8,14 @@ namespace Sena_TimeHub.datos
 {
     public class clActualizarContraseña
     {
-        public bool mtdActualizarC(string contraseña,int idU)
+        public bool mtdActualizarCU(string contraseña,int idU)
         {
             clConexion con = new clConexion();
             SqlConnection cone = con.mtdAbrirConexion();
             bool exito = false;
             try
             {
-                using (SqlCommand cmd = new SqlCommand("spActualizarContraseña", cone))
+                using (SqlCommand cmd = new SqlCommand("spActualizarContraseñaU", cone))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@pass", contraseña);
@@ -31,7 +31,38 @@ namespace Sena_TimeHub.datos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine("error en capa datos Usuario" + ex.ToString());
+            }
+            finally
+            {
+                con.mtdCerrarConexion();
+            }
+            return exito;
+        }
+        public bool mtdActualizarCA(string contraseña, int idA)
+        {
+            clConexion con = new clConexion();
+            SqlConnection cone = con.mtdAbrirConexion();
+            bool exito = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("spActualizarContraseñaA", cone))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@pass", contraseña);
+                    cmd.Parameters.AddWithValue("@IdAprendiz", idA);
+                    int filas = cmd.ExecuteNonQuery();
+                    if (filas > 0)
+                    {
+                        exito = true;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error en capa datos"+ex.ToString());
             }
             finally
             {

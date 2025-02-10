@@ -8,10 +8,15 @@ namespace Sena_TimeHub.logica
 {
     public class clActualizarContraseñaL
     {
-        public bool mtdActualizarC (string contra,int idU)
+        public bool mtdActualizarCU (string contra,int idU)
         {
             clActualizarContraseña oAct = new clActualizarContraseña();
-            return oAct.mtdActualizarC(contra,idU); 
+            return oAct.mtdActualizarCU(contra,idU); 
+        }
+        public bool mtdActualizarCA(string contra, int idA)
+        {
+            clActualizarContraseña oAct = new clActualizarContraseña();
+            return oAct.mtdActualizarCA(contra, idA);
         }
     }
 }

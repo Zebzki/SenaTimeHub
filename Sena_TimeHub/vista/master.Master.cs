@@ -24,7 +24,7 @@ namespace Sena_TimeHub.vista
                     if (Session["aprendiz"] != null)
                     {
                         menuAprendiz();
-                        lblUsuario.Text = "Bienvenido" + Session["aprendiz"];
+                        lblUsuario.Text = "Bienvenido: " + Session["aprendiz"];
                     }
                     else
                     {
