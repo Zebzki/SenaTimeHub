@@ -14,7 +14,7 @@ namespace Sena_TimeHub.datos
     {
         private clConexion conexion = new clConexion();
 
-        public bool RegistrarAprendiz(clUsuarioE oData, clFichaE oF)
+        public bool RegistrarAprendiz(clAprendizE oData, clFichaE oF)
         {
             
             SqlConnection connection = conexion.mtdAbrirConexion();
@@ -24,13 +24,12 @@ namespace Sena_TimeHub.datos
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@nombre", oData.nombre);
-                command.Parameters.AddWithValue("@apellido", oData.apellido);
-                command.Parameters.AddWithValue("@tipoDocumento", oData.tipoDocumento);
-                command.Parameters.AddWithValue("@documento", oData.documento);
-                command.Parameters.AddWithValue("@email", oData.email);
+                command.Parameters.AddWithValue("@nombre", oData.nombreAprendiz);
+                command.Parameters.AddWithValue("@apellido", oData.apellidoAprendiz);
+                command.Parameters.AddWithValue("@tipoDocumento", oData.tipoDocumentoAprendiz);
+                command.Parameters.AddWithValue("@documento", oData.documentoAprendiz);
+                command.Parameters.AddWithValue("@email", oData.emailAprendiz);
 
-                command.Parameters.AddWithValue("@idRol", oData.idRol);
                 command.Parameters.AddWithValue("@idFicha", oF.idFicha);
                 command.ExecuteNonQuery();
                 exito = true;

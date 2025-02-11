@@ -18,12 +18,13 @@ namespace Sena_TimeHub.vista
         protected void btnRegistrarArea_Click(object sender, EventArgs e)
         {
             string nombreArea = txtNombreArea.Text.Trim();
+            string tipo = txtTipoArea.Text.Trim();
 
-            if (!string.IsNullOrEmpty(nombreArea))
+            if (!string.IsNullOrEmpty(nombreArea) || !string.IsNullOrEmpty(tipo))
             {
                 try
                 {
-                    string mensaje = areaLogica.RegistrarArea(nombreArea);
+                    string mensaje = areaLogica.RegistrarArea(nombreArea, tipo);
 
 
                     pnlAlert.Visible = true;

@@ -11,14 +11,15 @@ namespace Sena_TimeHub.logica
     {
         private readonly clRegistrarAreaD area = new clRegistrarAreaD();
 
-        public string RegistrarArea(string nombreArea)
+        public string RegistrarArea(string nombreArea, string tipo)
         {
             clArea nuevaArea = new clArea
             {
-                nombreArea = nombreArea
+                nombreArea = nombreArea,
+                tipo = tipo
             };
 
-            area.RegistrarArea(nuevaArea, nombreArea);
+            area.RegistrarArea(nuevaArea, nombreArea, tipo);
             return "Area registrado correctamente!!!";
         }
     }

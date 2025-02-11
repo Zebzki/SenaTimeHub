@@ -62,6 +62,7 @@ namespace Sena_TimeHub.vista
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert",
           "Swal.fire({ title: 'Se actualizó correctamente', icon: 'success' }).then(() => { window.location.href = 'listarInstructor.aspx'; });", true);
+                Response.Redirect("listarInstructor.aspx");
             }
             else
             {

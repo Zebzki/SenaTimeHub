@@ -18,7 +18,7 @@ namespace Sena_TimeHub.datos
                 using (SqlCommand cmd = new SqlCommand("spEliminarApoyoC",conexion))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@idUsuario", id);
                     int filasAfectadas = cmd.ExecuteNonQuery();
                     if (filasAfectadas > 0)
                     {

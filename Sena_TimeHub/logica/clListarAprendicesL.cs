@@ -13,7 +13,7 @@ namespace Sena_TimeHub.logica
             return datos.ObtenerFichas();
         }
 
-        public List<clUsuarioE> ObtenerAprendicesPorFicha(int idFicha)
+        public List<clAprendizE> ObtenerAprendicesPorFicha(int idFicha)
         {
             return datos.MtdObtenerAprendicesPorFicha(idFicha);
         }

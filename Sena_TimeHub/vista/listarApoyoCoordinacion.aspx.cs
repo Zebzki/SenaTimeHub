@@ -20,7 +20,7 @@ namespace Sena_TimeHub.vista
         }
         private void cargarCoordinacion()
         {
-            int idRol = 4;
+            int idRol = 3;
             clListarCoordinacionL oLogica = new clListarCoordinacionL();
             List<clUsuarioE> listaC = oLogica.mtdListarC(idRol);
             gvAC.DataSource = listaC;

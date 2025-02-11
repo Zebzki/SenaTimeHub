@@ -21,27 +21,29 @@ namespace Sena_TimeHub.vista
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            clUsuarioE oUsuario = new clUsuarioE()
+            clAprendizE oAprendiz = new clAprendizE()
             {
-                nombre = txtNombre.Text,
-                apellido = txtApellido.Text,
-                tipoDocumento = ddlTipoDocumento.SelectedValue,
-                documento = txtDocumento.Text,
-                email = txtEmail.Text,
-                idRol = 3
+                nombreAprendiz = txtNombre.Text,
+                apellidoAprendiz = txtApellido.Text,
+                tipoDocumentoAprendiz = ddlTipoDocumento.SelectedValue,
+                documentoAprendiz = txtDocumento.Text,
+                emailAprendiz = txtEmail.Text,
+       
             };
             clFichaE oFicha = new clFichaE()
             {
                 idFicha = int.Parse( ddlFicha.SelectedValue)
             };
 
-            bool registroExitoso = registroAprendizLogica.RegistrarAprendiz(oUsuario,oFicha);
+            bool registroExitoso = registroAprendizLogica.RegistrarAprendiz(oAprendiz,oFicha);
 
             if (registroExitoso)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert", "Swal.fire('Registrado correctamente!');", true);
                 LimpiarFormulario();
-                Response.Redirect(Request.RawUrl); 
+                Response.Redirect(Request.RawUrl);
+                pnlAlert.Visible = true;
+                pnlAlert.GroupingText = "Registro Exitoso!!!";
             }
             else
             {

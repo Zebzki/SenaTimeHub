@@ -29,7 +29,7 @@ namespace Sena_TimeHub.datos
                                 nombrePrograma = reader.GetString(reader.GetOrdinal("nombrePrograma")),
                                 version = reader.GetString(reader.GetOrdinal("version")),
                                 codigo = reader.GetString(reader.GetOrdinal("codigo")),
-                                tipo = reader.GetString(reader.GetOrdinal("tipo"))
+                                tipo = reader.GetString(reader.GetOrdinal("tipoPrograma"))
                             };
                             lista.Add(user);
                         }

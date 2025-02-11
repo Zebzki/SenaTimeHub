@@ -18,7 +18,7 @@ namespace Sena_TimeHub.datos
                 using (SqlCommand cmd = new SqlCommand("sp_EliminarAprendiz", conexion))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@UsuarioId", idAprendiz);
+                    cmd.Parameters.AddWithValue("@idAprendiz", idAprendiz);
                     int filasAfectadas = cmd.ExecuteNonQuery();
                     if (filasAfectadas > 0)
                     {

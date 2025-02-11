@@ -19,7 +19,7 @@ namespace Sena_TimeHub.datos
                 using (SqlCommand cmd = new SqlCommand("spObtenerAC", conexion))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@idUsuario", id);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())

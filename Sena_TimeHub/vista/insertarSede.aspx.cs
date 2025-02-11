@@ -42,6 +42,7 @@ namespace Sena_TimeHub.vista
                 {
 
                     pnlAlert.Visible = true;
+                    pnlAlert.GroupingText = "Registro Exitoso!!!";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert", "Swal.fire('Registrado correctamente!');", true);
                     ClearFields();
 

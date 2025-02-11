@@ -74,6 +74,7 @@ namespace Sena_TimeHub.vista
         protected void gvAprendices_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument);
+            Console.WriteLine("Id: " + id);
 
             if (e.CommandName == "Editar")
             {
@@ -87,7 +88,7 @@ namespace Sena_TimeHub.vista
 
         private void editarAprendiz(int id)
         {
-            Response.Redirect($"editarAprendiz.aspx?idUsuario={id}");
+            Response.Redirect($"editarAprendiz.aspx?idAprendiz={id}");
         }
 
         private void eliminarAprendiz(int id)

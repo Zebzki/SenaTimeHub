@@ -10,7 +10,7 @@ namespace Sena_TimeHub.logica
         private clRegistarAprendizD RegistroAprendiz = new clRegistarAprendizD();
 
 
-        public bool RegistrarAprendiz(clUsuarioE oU, clFichaE oF)
+        public bool RegistrarAprendiz(clAprendizE oU, clFichaE oF)
         {
             return RegistroAprendiz.RegistrarAprendiz(oU, oF);
         }

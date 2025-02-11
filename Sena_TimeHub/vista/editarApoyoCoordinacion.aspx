@@ -222,11 +222,11 @@
         <h2 class="form-title">Editar Apoyo Coordinacion</h2>
         <div class="form-group">
             <label class="form-label">Nombre</label>
-            <asp:TextBox ID="txtNombre" runat="server" placeholder="Nombre"></asp:TextBox>
+            <asp:TextBox ID="txtNombre" runat="server" placeholder="Nombre" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="form-group">
             <label class="form-label">Apellido</label>
-            <asp:TextBox ID="txtApellido" runat="server" placeholder="Apellido"></asp:TextBox>
+            <asp:TextBox ID="txtApellido" runat="server" placeholder="Apellido" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="form-group">
             <label class="form-label">Tipo de Documento</label>
@@ -238,13 +238,13 @@
         </div>
         <div class="form-group">
             <label class="form-label">Documento</label>
-            <asp:TextBox ID="txtDocumento" runat="server" placeholder="Documento"></asp:TextBox>
+            <asp:TextBox ID="txtDocumento" runat="server" placeholder="Documento" CssClass="form-control"></asp:TextBox>
 
 
         </div>
         <div class="form-group">
             <label class="form-label">Email</label>
-            <asp:TextBox ID="txtEmail" runat="server" placeholder="Correo Electrónico"></asp:TextBox>
+            <asp:TextBox ID="txtEmail" runat="server" placeholder="Correo Electrónico" CssClass="form-control"></asp:TextBox>
 
         </div>
         <div class="form-group">

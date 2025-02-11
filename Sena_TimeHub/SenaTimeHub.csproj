@@ -221,7 +221,7 @@
     <Compile Include="datos\clListarFichaD.cs" />
     <Compile Include="datos\clListarInstructorD.cs" />
     <Compile Include="datos\clListarProgramaD.cs" />
-    <Compile Include="datos\clObtenerAprendices.cs" />
+    <Compile Include="datos\clObtenerAprendicesYUsuarios.cs" />
     <Compile Include="datos\clObtenerCoordinacionD.cs" />
     <Compile Include="datos\clObtenerSedeD.cs" />
     <Compile Include="datos\clProgramaD.cs" />
@@ -266,7 +266,7 @@
     <Compile Include="logica\clListarFichaL.cs" />
     <Compile Include="logica\clListarInstructorL.cs" />
     <Compile Include="logica\clListarProgramaL.cs" />
-    <Compile Include="logica\clObtenerAprendicesLcs.cs" />
+    <Compile Include="logica\clObtenerAprendicesYUsuariosLcs.cs" />
     <Compile Include="logica\clObtenerCoordinacionL.cs" />
     <Compile Include="logica\clObtenerSedeL.cs" />
     <Compile Include="logica\clProgramaL.cs" />

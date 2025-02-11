@@ -12,7 +12,7 @@ namespace Sena_TimeHub.datos
     {
         private clConexion conexion = new clConexion();
 
-        public void RegistrarArea(clArea area, string nombreArea)
+        public void RegistrarArea(clArea area, string nombreArea, string tipo)
         {
             using (SqlConnection con = conexion.mtdAbrirConexion())
             {
@@ -22,6 +22,7 @@ namespace Sena_TimeHub.datos
 
 
                     cmd.Parameters.AddWithValue("@nombreArea", area.nombreArea);
+                    cmd.Parameters.AddWithValue("@tipo", area.tipo);
 
 
                     cmd.ExecuteNonQuery();

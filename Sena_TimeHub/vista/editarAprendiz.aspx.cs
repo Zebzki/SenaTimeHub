@@ -11,14 +11,15 @@ namespace Sena_TimeHub.vista
         {
             if (!IsPostBack)
             {
-                string idUsuarioURL = Request.QueryString["idUsuario"];
-                if (!string.IsNullOrWhiteSpace(idUsuarioURL) && int.TryParse(idUsuarioURL, out int idUsuario))
+                string idAprendizURL = Request.QueryString["idAprendiz"];
+                
+                if (!string.IsNullOrWhiteSpace(idAprendizURL) && int.TryParse(idAprendizURL, out int idAprendiz))
                 {
-                    CargarAprendiz(idUsuario);
+                    CargarAprendiz(idAprendiz);
                 }
                 else
                 {
-                    MostrarMensaje("ID de usuario no válido.");
+                    MostrarMensaje("ID de Aprendiz no válido.");
                 }
             }
         }
@@ -27,20 +28,19 @@ namespace Sena_TimeHub.vista
         {
             try
             {
-                clObtenerAprendicesLcs oLogica = new clObtenerAprendicesLcs();
-                clUsuarioE oUsuario = oLogica.ObtenerAprendizPorId(id); 
-
-                if (oUsuario != null)
+                clObtenerAprendicesYUsuariosLcs oLogica = new clObtenerAprendicesYUsuariosLcs();
+                clAprendizE oAprendiz = oLogica.ObtenerAprendizPorId(id);
+                if (oAprendiz != null)
                 {
-                    txtNombre.Text = oUsuario.nombre;
-                    txtApellido.Text = oUsuario.apellido;
-                    ddlTipoDocumento.SelectedValue = oUsuario.tipoDocumento;
-                    txtDocumento.Text = oUsuario.documento;
-                    txtEmail.Text = oUsuario.email;
+                    txtNombre.Text = oAprendiz.nombreAprendiz;
+                    txtApellido.Text = oAprendiz.apellidoAprendiz;
+                    ddlTipoDocumento.SelectedValue = oAprendiz.tipoDocumentoAprendiz;
+                    txtDocumento.Text = oAprendiz.documentoAprendiz;
+                    txtEmail.Text = oAprendiz.emailAprendiz;
                 }
                 else
                 {
-                    MostrarMensaje("Usuario no encontrado.");
+                    MostrarMensaje("Aprendiz no encontrado.");
                 }
             }
             catch (Exception ex)
@@ -53,18 +53,18 @@ namespace Sena_TimeHub.vista
         {
             try
             {
-                clUsuarioE oUsuario = new clUsuarioE
+                clAprendizE oAprendiz = new clAprendizE()
                 {
-                    idUsuario = int.Parse(Request.QueryString["idUsuario"]),
-                    nombre = string.IsNullOrWhiteSpace(txtNombre.Text) ? null : txtNombre.Text,
-                    apellido = string.IsNullOrWhiteSpace(txtApellido.Text) ? null : txtApellido.Text,
-                   tipoDocumento = string.IsNullOrWhiteSpace(ddlTipoDocumento.SelectedValue) ? null : ddlTipoDocumento.SelectedValue,
-                    documento = string.IsNullOrWhiteSpace(txtDocumento.Text) ? null : txtDocumento.Text,
-                    email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text,
+                    idAprendiz = int.Parse(Request.QueryString["idAprendiz"]),
+                    nombreAprendiz = string.IsNullOrWhiteSpace(txtNombre.Text) ? null : txtNombre.Text,
+                    apellidoAprendiz = string.IsNullOrWhiteSpace(txtApellido.Text) ? null : txtApellido.Text,
+                   tipoDocumentoAprendiz = string.IsNullOrWhiteSpace(ddlTipoDocumento.SelectedValue) ? null : ddlTipoDocumento.SelectedValue,
+                    documentoAprendiz = string.IsNullOrWhiteSpace(txtDocumento.Text) ? null : txtDocumento.Text,
+                    emailAprendiz = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text,
                 };
 
                 clEditarAprendizL oLogica = new clEditarAprendizL();
-                bool exito = oLogica.EditarAprendiz(oUsuario); // Método para actualizar aprendiz
+                bool exito = oLogica.EditarAprendiz(oAprendiz); // Método para actualizar aprendiz
 
                 if (exito)
                 {

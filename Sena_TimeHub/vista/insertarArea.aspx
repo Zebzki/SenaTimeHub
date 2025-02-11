@@ -102,6 +102,12 @@
         </div>
 
         <div class="form-group">
+    <asp:Label ID="lblTipo" runat="server" Text="Tipo del Área" CssClass="form-label" AssociatedControlID="txtTipoArea"></asp:Label>
+    <asp:TextBox ID="txtTipoArea" runat="server" CssClass="form-control" placeholder="Ingrese el Tipo del área"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTipoArea" ErrorMessage="El Tipo del área es obligatorio" CssClass="text-danger" Display="Dynamic" ValidationGroup="error" />
+</div>
+
+        <div class="form-group">
             <asp:Button ID="btnRegistrarArea" runat="server" Text="Registrar" CssClass="btn-submit" OnClick="btnRegistrarArea_Click" ValidationGroup="error" />
         </div>
     </div>
