@@ -10,7 +10,7 @@ namespace Sena_TimeHub.logica
     public class clEditarAprendizL
     {
         private clEditarAprendiz datos = new clEditarAprendiz();
-        public bool EditarAprendiz(clUsuarioE aprendiz)
+        public bool EditarAprendiz(clAprendizE aprendiz)
         {
             datos.EditarAprendiz(aprendiz);
             return true;

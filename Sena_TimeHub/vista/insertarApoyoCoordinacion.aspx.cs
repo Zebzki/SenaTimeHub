@@ -25,7 +25,7 @@ namespace Sena_TimeHub.vista
                 tipoDocumento = ddlTipoDocumento.SelectedValue,
                 documento = txtDocumento.Text,
                 email = txtEmail.Text,
-                idRol = 4
+                idRol = 3
             };
             clRegistrarCoordinacionL oRegistro = new clRegistrarCoordinacionL();
             bool exito = oRegistro.mtdRegistrar(oUSuario);

@@ -1,4 +1,5 @@
 ﻿using Sena_TimeHub.entidades;
+using Sena_TimeHub.logica;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -9,7 +10,7 @@ namespace Sena_TimeHub.datos
 {
     public class clEditarAprendiz
     {
-        public void EditarAprendiz(clUsuarioE aprendiz)
+        public void EditarAprendiz(clAprendizE aprendiz)
         {
             clConexion con = new clConexion();
             SqlConnection cone  = con.mtdAbrirConexion();
@@ -18,12 +19,12 @@ namespace Sena_TimeHub.datos
                 using (SqlCommand cmd = new SqlCommand("spActualizarAprendiz", cone))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@idUsuario", aprendiz.idUsuario);
-                    cmd.Parameters.AddWithValue("@nombre", aprendiz.nombre);
-                    cmd.Parameters.AddWithValue("@apellido", aprendiz.apellido);
-                    cmd.Parameters.AddWithValue("@tipoDocumento", aprendiz.tipoDocumento);
-                    cmd.Parameters.AddWithValue("@documento", aprendiz.documento);
-                    cmd.Parameters.AddWithValue("@email", aprendiz.email);
+                    cmd.Parameters.AddWithValue("@idAprendiz", aprendiz.idAprendiz);
+                    cmd.Parameters.AddWithValue("@nombre", aprendiz.nombreAprendiz);
+                    cmd.Parameters.AddWithValue("@apellido", aprendiz.apellidoAprendiz);
+                    cmd.Parameters.AddWithValue("@tipoDocumento", aprendiz.tipoDocumentoAprendiz);
+                    cmd.Parameters.AddWithValue("@documento", aprendiz.documentoAprendiz);
+                    cmd.Parameters.AddWithValue("@email", aprendiz.emailAprendiz);
                     cmd.ExecuteNonQuery();
                 }
             }

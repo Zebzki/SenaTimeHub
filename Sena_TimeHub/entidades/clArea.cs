@@ -9,5 +9,6 @@ namespace Sena_TimeHub.entidades
     {
         public int idArea { get; set; }
         public string nombreArea { get; set; }
+        public string tipo { get; set; }
     }
 }

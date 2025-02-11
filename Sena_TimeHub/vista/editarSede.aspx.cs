@@ -55,6 +55,9 @@ namespace Sena_TimeHub.vista
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert",
           "Swal.fire({ title: 'Se actualizó correctamente', icon: 'success' }).then(() => { window.location.href = 'listarSede.aspx'; });", true);
+
+                Response.Redirect("listarSede.aspx");
+
             }
             else
             {
