@@ -24,15 +24,18 @@ namespace Sena_TimeHub.datos
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@nombre", oData.nombreAprendiz);
-                command.Parameters.AddWithValue("@apellido", oData.apellidoAprendiz);
-                command.Parameters.AddWithValue("@tipoDocumento", oData.tipoDocumentoAprendiz);
-                command.Parameters.AddWithValue("@documento", oData.documentoAprendiz);
-                command.Parameters.AddWithValue("@email", oData.emailAprendiz);
+                command.Parameters.AddWithValue("@nombreAprendiz", oData.nombreAprendiz);
+                command.Parameters.AddWithValue("@apellidoAprendiz", oData.apellidoAprendiz);
+                command.Parameters.AddWithValue("@tipoDocumentoAprendiz", oData.tipoDocumentoAprendiz);
+                command.Parameters.AddWithValue("@documentoAprendiz", oData.documentoAprendiz);
+                command.Parameters.AddWithValue("@emailAprendiz", oData.emailAprendiz);
 
                 command.Parameters.AddWithValue("@idFicha", oF.idFicha);
-                command.ExecuteNonQuery();
-                exito = true;
+                int filasAfectadas = command.ExecuteNonQuery();
+                if (filasAfectadas > 0)
+                {
+                    exito = true;
+                }
             }
             catch(Exception ex) 
             {
