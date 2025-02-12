@@ -4,6 +4,7 @@ using Sena_TimeHub.entidades;
 using Sena_TimeHub.logica;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
 
 namespace Sena_TimeHub.vista
 {
@@ -97,9 +98,17 @@ namespace Sena_TimeHub.vista
                     viernes = chkViernes.Checked,
                     sabado = chkSabado.Checked
                 };
-
+                int idFicha = nuevoHorario.IdFicha;
                 string resultado = logicaHorario.RegistrarHorario(nuevoHorario);
+                clHorarioInstructorL horarioL = new clHorarioInstructorL();
+                List<string> correos = horarioL.mtdObtenerCorreos(idFicha);
+                string asunto = "Nuevo Horario Asignado";
+                string mensaje = "Estimado aprendiz, se ha ingresado un nuevo horario para su ficha. Por favor, revise el sistema para mas detalles";
 
+                foreach (string correo in correos)
+                {
+                    EnviarCorreo(correo, asunto, mensaje);
+                }
                 ScriptManager.RegisterStartupScript(this, GetType(), "alerta", $"alert('{resultado}'); ", true);
             }
             catch (FormatException)
@@ -109,6 +118,31 @@ namespace Sena_TimeHub.vista
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "alerta", $"alert('Error al registrar el horario: {ex.Message}');", true);
+            }
+        }
+        private static void EnviarCorreo(string destinatario, string asunto, string mensaje)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("senatimehubinformacion@gmail.com");
+                mail.To.Add(destinatario);
+                mail.Subject = asunto;
+                mail.Body = mensaje;
+
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Host = "smtp.gmail.com";
+                smtpClient.Port = 587; // Puerto del servidor SMTP
+                smtpClient.Credentials = new System.Net.NetworkCredential("senatimehubinformacion@gmail.com", "jkhh xolw ifgv yxzf");
+                smtpClient.EnableSsl = true;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+                smtpClient.Send(mail);
+                Console.WriteLine("Correo enviado exitosamente.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en EnviarCorreo: " + ex.Message);
             }
         }
     }
