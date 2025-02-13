@@ -1,6 +1,7 @@
 ﻿using Sena_TimeHub.entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -19,10 +20,11 @@ namespace Sena_TimeHub.datos
                 using (SqlCommand cmd = new SqlCommand("spLoginAprendiz", cone))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@email", oData.emailAprendiz);
-                    cmd.Parameters.AddWithValue("@clave", oData.contrasenaAprendiz);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
+                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = oData.emailAprendiz;
+                    cmd.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = oData.contrasenaAprendiz;
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    
                         if (reader.Read())
                         {
                             oAprendiz = new clAprendizE
@@ -33,7 +35,7 @@ namespace Sena_TimeHub.datos
                             };
                         }
 
-                    }
+                    
 
                 }
             }

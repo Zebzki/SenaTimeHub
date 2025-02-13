@@ -39,7 +39,7 @@ namespace Sena_TimeHub.vista
 
             clAprendizE oAprendiz = new clAprendizE();
             oAprendiz.emailAprendiz = txtEmail.Text;
-            oAprendiz.contrasenaAprendiz = txtPassword.Text;
+            oAprendiz.contrasenaAprendiz = txtPassword.Text.Trim();
 
             clAprendizL oLogicaA = new clAprendizL();
             clAprendizE oIngresoAprendiz = oLogicaA.mtdIngresoAprendiz(oAprendiz);
@@ -50,7 +50,6 @@ namespace Sena_TimeHub.vista
             {
                 Session["idUsuario"] = oIngreso.idUsuario;
                 Session["usuario"] = oIngreso.nombre+" "+oIngreso.apellido;
-                Session["tipoUsuario"] = "usuario";
                 if (!string.IsNullOrEmpty(oIngreso.rol))
                 {
                    
@@ -67,23 +66,19 @@ namespace Sena_TimeHub.vista
                 Response.Redirect("vista/dashboard.aspx");
                 
             }
-            else
-            {
-                mensaje("usuario o contraseña incorrectos");
-
-            }
-            if (oIngresoAprendiz !=null )
+            else if (oIngresoAprendiz != null)
             {
                 Session["idAprendiz"] = oIngresoAprendiz.idAprendiz;
                 Session["aprendiz"] = oIngresoAprendiz.nombreAprendiz + " " + oIngresoAprendiz.apellidoAprendiz;
-                Session["tipoUsuario"] = "aprendiz";
-                Response.Redirect("vista/dashboardAprendiz.aspx");        
+                Response.Redirect("vista/dashboardAprendiz.aspx");
             }
             else
             {
                 mensaje("usuario o contraseña incorrectos");
 
             }
+
+          
         }
     }
 }

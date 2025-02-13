@@ -23,11 +23,19 @@ namespace Sena_TimeHub.datos
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@nombreAprendiz", oData.nombreAprendiz);
-                command.Parameters.AddWithValue("@apellidoAprendiz", oData.apellidoAprendiz);
-                command.Parameters.AddWithValue("@tipoDocumentoAprendiz", oData.tipoDocumentoAprendiz);
-                command.Parameters.AddWithValue("@documentoAprendiz", oData.documentoAprendiz);
-                command.Parameters.AddWithValue("@emailAprendiz", oData.emailAprendiz);
+
+
+                // Los nombres de los parámetros ahora coinciden con los del procedimiento almacenado
+
+                command.Parameters.Add("@nombreAprendiz", SqlDbType.VarChar, 80).Value = oData.nombreAprendiz;
+                
+                command.Parameters.Add("@apellidoAprendiz", SqlDbType.VarChar, 80).Value = oData.apellidoAprendiz;
+
+                command.Parameters.Add("@tipoDocumentoAprendiz", SqlDbType.VarChar, 10).Value = oData.tipoDocumentoAprendiz;
+
+                command.Parameters.Add("@documentoAprendiz", SqlDbType.VarChar, 15).Value = oData.documentoAprendiz;
+                command.Parameters.Add("@emailAprendiz", SqlDbType.VarChar, 100).Value = oData.emailAprendiz;
+
 
 
 
