@@ -14,7 +14,7 @@ namespace Sena_TimeHub.entidades
         public string documento { get; set; }
         public string email { get; set; }
         public string contraseña { get; set; }
-
+        public string tipo { get; set; }
         public bool validar { get; set; }
 
 

@@ -14,6 +14,7 @@ namespace Sena_TimeHub.entidades
         public string documentoAprendiz { get; set; }
         public string emailAprendiz { get; set; }
         public string contrasenaAprendiz { get; set; }
+        public bool  validarAprendiz { get; set; }
 
     }
 }

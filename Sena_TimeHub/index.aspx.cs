@@ -50,6 +50,7 @@ namespace Sena_TimeHub.vista
             {
                 Session["idUsuario"] = oIngreso.idUsuario;
                 Session["usuario"] = oIngreso.nombre+" "+oIngreso.apellido;
+                Session["tipoUsuario"] = "usuario";
                 if (!string.IsNullOrEmpty(oIngreso.rol))
                 {
                    
@@ -75,6 +76,7 @@ namespace Sena_TimeHub.vista
             {
                 Session["idAprendiz"] = oIngresoAprendiz.idAprendiz;
                 Session["aprendiz"] = oIngresoAprendiz.nombreAprendiz + " " + oIngresoAprendiz.apellidoAprendiz;
+                Session["tipoUsuario"] = "aprendiz";
                 Response.Redirect("vista/dashboardAprendiz.aspx");        
             }
             else
