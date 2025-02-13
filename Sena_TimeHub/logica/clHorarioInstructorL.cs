@@ -10,7 +10,7 @@ namespace Sena_TimeHub.logica
     public class clHorarioInstructorL
     {
         private clHorarioInstructorD horarioI = new clHorarioInstructorD();
-        public List<clHorario> mtdHorarioInstructor (int idInstructor)
+        public List<clHorarioI> mtdHorarioInstructor (int idInstructor)
         {
             return horarioI.mtdHorarioInstructor(idInstructor);
         }

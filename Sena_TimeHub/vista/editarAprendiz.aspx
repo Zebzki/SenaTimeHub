@@ -214,58 +214,82 @@
                 text-decoration: underline;
             }
 
+        .form-group-icon {
+            position: relative;
+        }
+
+            .form-group-icon i {
+                position: absolute;
+                top: 50%;
+                left: 12px;
+                transform: translateY(-50%);
+                color: #28a745;
+                font-size: 1.2em;
+                pointer-events: none;
+            }
+
+            .form-group-icon .form-control {
+                padding-left: 40px;
+            }
+
         
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="form-container">
         <h2 class="form-title">Editar Aprendices</h2>
+
         <div class="form-group">
-            <label class="form-label">Nombre</label>
-            <asp:TextBox ID="txtNombre" runat="server" placeholder="Nombre" CssClass="form-control"></asp:TextBox>
+            <label class="form-label" for="txtNombre">Nombre</label>
+            <div class="form-group-icon">
+                <i class="fa fa-user"></i>
+                <asp:TextBox ID="txtNombre" runat="server" placeholder="Nombre" CssClass="form-control"></asp:TextBox>
+            </div>
         </div>
+
         <div class="form-group">
-            <label class="form-label">Apellido</label>
-            <asp:TextBox ID="txtApellido" runat="server" placeholder="Apellido" CssClass="form-control"></asp:TextBox>
+            <label class="form-label" for="txtApellido">Apellido</label>
+            <div class="form-group-icon">
+                <i class="fa fa-user"></i>
+                <asp:TextBox ID="txtApellido" runat="server" placeholder="Apellido" CssClass="form-control"></asp:TextBox>
+            </div>
         </div>
+
         <div class="form-group">
-            <label class="form-label">Tipo de Documento</label>
+            <label class="form-label" for="ddlTipoDocumento">Tipo de Documento</label>
             <asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-control">
+                <asp:ListItem Value="P.S">Pasaporte</asp:ListItem>
                 <asp:ListItem Value="C.C">Cédula de Ciudadanía</asp:ListItem>
                 <asp:ListItem Value="T.I">Tarjeta de Identidad</asp:ListItem>
                 <asp:ListItem Value="C.E">Cédula de Extranjería</asp:ListItem>
             </asp:DropDownList>
         </div>
+
         <div class="form-group">
-            <label class="form-label">Documento</label>
-            <asp:TextBox ID="txtDocumento" runat="server" placeholder="Documento" CssClass="form-control"></asp:TextBox>
-
-
+            <label class="form-label" for="txtDocumento">Documento</label>
+            <div class="form-group-icon">
+                <i class="fa fa-id-card"></i>
+                <asp:TextBox ID="txtDocumento" runat="server" placeholder="Documento" CssClass="form-control"></asp:TextBox>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="form-label">Email</label>
-            <asp:TextBox ID="txtEmail" runat="server" placeholder="Correo Electrónico" CssClass="form-control"></asp:TextBox>
 
-        </div>
         <div class="form-group">
+            <label class="form-label" for="txtEmail">Email</label>
+            <div class="form-group-icon">
+                <i class="fa fa-envelope"></i>
+                <asp:TextBox ID="txtEmail" runat="server" placeholder="Correo Electrónico" CssClass="form-control"></asp:TextBox>
+            </div>
+        </div>
+
+        <div class="form-group text-center">
             <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" CssClass="btn-submit" OnClick="btnActualizar_Click" />
-
         </div>
     </div>
-    <div class="background-decorations">
-        <svg class="circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="50" fill="#28a745" opacity="0.1" />
-        </svg>
-        <svg class="square" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <rect width="100" height="100" fill="#28a745" opacity="0.1" />
-        </svg>
-    </div>
-
 
     <footer>
         &copy; 2024 Sena TimeHub. Todos los derechos reservados.
-   
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </asp:Content>
+

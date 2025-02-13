@@ -14,7 +14,7 @@ namespace Sena_TimeHub.datos
             List<clFichaE> fichas = new List<clFichaE>();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("ObtenerFichasActiva", cone))
+                using (SqlCommand cmd = new SqlCommand("ObtenerFichasActivas", cone))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -27,7 +27,6 @@ namespace Sena_TimeHub.datos
                                 numeroFicha = reader["numeroFicha"].ToString()
                             };
                             fichas.Add(ficha);
-
                         }
                     }
                 }
@@ -53,17 +52,17 @@ namespace Sena_TimeHub.datos
                 using (SqlCommand cmd = new SqlCommand("sp_ObtenerAprendicesPorFicha", cone))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@idFicha", idFicha);
+                    cmd.Parameters.AddWithValue("@FichaId", idFicha);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             clAprendizE user = new clAprendizE()
                             {
-                                idAprendiz = reader.GetInt32(reader.GetOrdinal("idAprendiz")),
-                                nombreAprendiz = reader.GetString(reader.GetOrdinal("nombreAprendiz")),
-                                apellidoAprendiz = reader.GetString(reader.GetOrdinal("apellidoAprendiz")),
-                                emailAprendiz = reader.GetString(reader.GetOrdinal("emailAprendiz"))
+                                idAprendiz = reader.GetInt32(reader.GetOrdinal("AprendizId")),
+                                nombreAprendiz = reader.GetString(reader.GetOrdinal("NombreAprendiz")),
+                                apellidoAprendiz = reader.GetString(reader.GetOrdinal("ApellidoAprendiz")),
+                                emailAprendiz = reader.GetString(reader.GetOrdinal("Email"))
                             };
                             aprendices.Add(user);
                         }

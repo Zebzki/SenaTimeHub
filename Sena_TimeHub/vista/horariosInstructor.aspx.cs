@@ -26,19 +26,20 @@ namespace Sena_TimeHub.vista
         public static List<object> ObtenerFechas()
         {
             int idInstructor = Convert.ToInt32(HttpContext.Current.Session["idUsuario"]);
-            List<clHorario> horarios = horarioL.mtdHorarioInstructor(idInstructor);
+            List<clHorarioI> horarios = horarioL.mtdHorarioInstructor(idInstructor);
 
            
             var resultado = horarios.Select(h => new
             {
                 fecha = h.fechaInicio.ToString("yyyy-MM-dd"), // Fecha
-                horaInicio = h.horaInicio.ToString(@"hh\:mm"), // Hora inicial (formato HH:MM)
-                horaFin = h.horaFinal.ToString(@"hh\:mm"), // Hora final (formato HH:MM)
-                ficha = h.ficha, // Número de ficha
-                ambiente = h.ambiente, // Ambiente asignado
+                horaInicio = h.horaInicio.ToString(@"hh\:mm"), 
+                horaFin = h.horaFinal.ToString(@"hh\:mm"), 
+                ficha = h.ficha, 
+                ambiente = h.ambiente, 
                 dias = h.dias,
                 esCancelada = h.esCancelada,
-                idHorario = h.idHorario
+                idHorario = h.idHorario,
+                
                 
             }).ToList();
 

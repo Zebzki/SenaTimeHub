@@ -1,5 +1,4 @@
 ﻿using Sena_TimeHub.entidades;
-using Sena_TimeHub.logica;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -20,11 +19,11 @@ namespace Sena_TimeHub.datos
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@idAprendiz", aprendiz.idAprendiz);
-                    cmd.Parameters.AddWithValue("@nombre", aprendiz.nombreAprendiz);
-                    cmd.Parameters.AddWithValue("@apellido", aprendiz.apellidoAprendiz);
-                    cmd.Parameters.AddWithValue("@tipoDocumento", aprendiz.tipoDocumentoAprendiz);
-                    cmd.Parameters.AddWithValue("@documento", aprendiz.documentoAprendiz);
-                    cmd.Parameters.AddWithValue("@email", aprendiz.emailAprendiz);
+                    cmd.Parameters.AddWithValue("@nombreAprendiz", aprendiz.nombreAprendiz);
+                    cmd.Parameters.AddWithValue("@apellidoAprendiz", aprendiz.apellidoAprendiz);
+                    cmd.Parameters.AddWithValue("@tipoDocumentoAprendiz", aprendiz.tipoDocumentoAprendiz);
+                    cmd.Parameters.AddWithValue("@documentoAprendiz", aprendiz.documentoAprendiz );
+                    cmd.Parameters.AddWithValue("@emailAprendiz", aprendiz.emailAprendiz);
                     cmd.ExecuteNonQuery();
                 }
             }

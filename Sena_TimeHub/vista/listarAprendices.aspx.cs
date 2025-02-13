@@ -16,9 +16,25 @@ namespace Sena_TimeHub.vista
         {
             if (!IsPostBack)
             {
+                Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private";
+                Response.Headers["Pragma"] = "no-cache";
+                Response.Headers["Expires"] = "0";
+
                 CargarFichas();
                 pnlAprendices.Visible = false;
                 pnlEditarAprendiz.Visible = false;
+
+
+                if (Session["Eliminado"] != null && (bool)Session["Eliminado"])
+                {
+                    MostrarAlerta("El aprendiz fue eliminado correctamente.");
+                    Session["Eliminado"] = null;
+                }
+                else if (Session["Eliminado"] != null && !(bool)Session["Eliminado"])
+                {
+                    MostrarAlerta("No se eliminó el aprendiz.");
+                    Session["Eliminado"] = null;
+                }
             }
         }
 
@@ -38,6 +54,11 @@ namespace Sena_TimeHub.vista
         private void MostrarError(string mensaje)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('{mensaje}');", true);
+        }
+
+        private void MostrarAlerta(string mensaje)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert", $"Swal.fire('{mensaje}');", true);
         }
 
         protected void repFichas_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -74,7 +95,6 @@ namespace Sena_TimeHub.vista
         protected void gvAprendices_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument);
-            Console.WriteLine("Id: " + id);
 
             if (e.CommandName == "Editar")
             {
@@ -88,7 +108,7 @@ namespace Sena_TimeHub.vista
 
         private void editarAprendiz(int id)
         {
-            Response.Redirect($"editarAprendiz.aspx?idAprendiz={id}");
+            Response.Redirect($"editarAprendiz.aspx?idUsuario={id}");
         }
 
         private void eliminarAprendiz(int id)
@@ -99,14 +119,20 @@ namespace Sena_TimeHub.vista
 
                 if (eliminado)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert", "Swal.fire('El aprendiz fue eliminado correctamente.');", true);
-                    cargarAprendices(int.Parse(hfSelectedFicha.Value));
+
+                    Session["Eliminado"] = true;
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert", "Swal.fire({\r\n  icon: \"error\",\r\n  title: \"Oops...\",\r\n  text: \"No se eliminó\",\r\n});\r\n", true);
 
+                    Session["Eliminado"] = false;
                 }
+
+
+                cargarAprendices(int.Parse(hfSelectedFicha.Value));
+
+
+                Response.Redirect(Request.RawUrl);
             }
             catch (Exception ex)
             {
@@ -118,6 +144,5 @@ namespace Sena_TimeHub.vista
         {
             // Se requiere para que el GridView se pueda renderizar en la exportación
         }
-
     }
 }

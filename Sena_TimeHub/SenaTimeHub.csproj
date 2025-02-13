@@ -198,6 +198,7 @@
     <Content Include="vista\listarPrograma.aspx" />
     <Content Include="vista\listarSede.aspx" />
     <Content Include="vista\recuperarContrasena.aspx" />
+    <Content Include="vista\VerAprendiz.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -233,12 +234,14 @@
     <Compile Include="datos\clRegistrarSedeD.cs" />
     <Compile Include="datos\clRegistroCoordinacionD.cs" />
     <Compile Include="datos\clUsuarioD.cs" />
+    <Compile Include="datos\VerHorarioAprendizD.cs" />
     <Compile Include="entidades\clAmbienteE.cs" />
     <Compile Include="entidades\clAprendizE.cs" />
     <Compile Include="entidades\clArea.cs" />
     <Compile Include="entidades\clDia.cs" />
     <Compile Include="entidades\clFichaE.cs" />
     <Compile Include="entidades\clHorario.cs" />
+    <Compile Include="entidades\clHorarioI.cs" />
     <Compile Include="entidades\clProgramaE.cs" />
     <Compile Include="entidades\clRol.cs" />
     <Compile Include="entidades\clSedeE.cs" />
@@ -278,6 +281,7 @@
     <Compile Include="logica\clRegistrarAprendizL.cs" />
     <Compile Include="logica\clRegistrarCoordinacionL.cs" />
     <Compile Include="logica\clUsuarioL.cs" />
+    <Compile Include="logica\VerHorarioAprendizL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -488,6 +492,13 @@
     </Compile>
     <Compile Include="vista\recuperarContrasena.aspx.designer.cs">
       <DependentUpon>recuperarContrasena.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\VerAprendiz.aspx.cs">
+      <DependentUpon>VerAprendiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\VerAprendiz.aspx.designer.cs">
+      <DependentUpon>VerAprendiz.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -167,24 +167,24 @@
 
         <asp:Panel ID="pnlAprendices" runat="server" Visible="false" CssClass="grid-container">
             <div class="grid-title">Listado de Aprendices</div>
-            <asp:GridView ID="gvAprendices" runat="server" AutoGenerateColumns="false" CssClass="table table-striped" DataKeyNames="idAprendiz" OnRowCommand="gvAprendices_RowCommand">
+            <asp:GridView ID="gvAprendices" runat="server" AutoGenerateColumns="false" CssClass="table table-striped" DataKeyNames="idUsuario" OnRowCommand="gvAprendices_RowCommand">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%# Eval("idAprendiz") %>' CssClass="btn btn-sm btn-primary" />
+                            <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%# Eval("idUsuario") %>' CssClass="btn btn-sm btn-primary" />
 
                         </ItemTemplate>
                     </asp:TemplateField>
 
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandName="CustomDelete" CommandArgument='<%# Eval("idAprendiz") %>' CssClass="btn btn-sm btn-danger" />
+                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandName="CustomDelete" CommandArgument='<%# Eval("idUsuario") %>' CssClass="btn btn-sm btn-danger" />
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:BoundField DataField="nombreAprendiz" HeaderText="Nombre" ItemStyle-Width="150px" />
-                    <asp:BoundField DataField="apellidoAprendiz" HeaderText="Apellido" ItemStyle-Width="150px" />
-                    <asp:BoundField DataField="emailAprendiz" HeaderText="Correo Electrónico" ItemStyle-Width="300px" />
+                    <asp:BoundField DataField="nombre" HeaderText="Nombre" ItemStyle-Width="150px" />
+                    <asp:BoundField DataField="apellido" HeaderText="Apellido" ItemStyle-Width="150px" />
+                    <asp:BoundField DataField="email" HeaderText="Correo Electrónico" ItemStyle-Width="300px" />
                 </Columns>
             </asp:GridView>
         </asp:Panel>
@@ -199,14 +199,14 @@
 
     function printTable() {
         var content = document.getElementById('<%= gvAprendices.ClientID %>').outerHTML;
-        var printWindow = window.open('', '', 'height=1400,width=1600');
-        printWindow.document.write('<html><head><title>Tabla de Aprendices</title></head><body>');
-        printWindow.document.write(content);
-        printWindow.document.write('</body></html>');
-        printWindow.document.close();
-        printWindow.print();
-    }
-</script>
+            var printWindow = window.open('', '', 'height=1400,width=1600');
+            printWindow.document.write('<html><head><title>Tabla de Aprendices</title></head><body>');
+            printWindow.document.write(content);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
 
         <!-- Panel para editar un aprendiz -->
         <asp:Panel ID="pnlEditarAprendiz" runat="server" Visible="false" CssClass="grid-container">
@@ -232,4 +232,7 @@
             &copy; 2024 Sena TimeHub. Todos los derechos reservados.
 
         </footer>
+    <asp:ScriptManager runat="server" ID="ScriptManager1" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </asp:Content>
