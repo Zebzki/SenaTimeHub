@@ -56,6 +56,7 @@ namespace Sena_TimeHub
             Session["idAprendiz"] = null;
             Session["rol"] = null ;
             Session["idUsuario"] = null;
+            Session["tipoUsuario"] = null;
             Session["autenticacion"] = "";
             Session["correoUsuario"] = "";
             Session["ruta"] = "";

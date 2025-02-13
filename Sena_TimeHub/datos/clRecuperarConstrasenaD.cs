@@ -101,6 +101,96 @@ namespace Sena_TimeHub.datos
             return objUsuarioE;
 
         }
+        public clAprendizE mtdRecuperarContrasenaAp(string correo = null, int idAprendiz = 0, string contrasena = null)
+        {
+            clAprendizE objAprendiz = new clAprendizE();
+
+
+            if (correo != null)
+            {
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("spRecuperarContrasenaAp", objConexion.mtdAbrirConexion());
+                    cmd.Parameters.AddWithValue("@emailAprendiz", correo);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataReader fila = cmd.ExecuteReader())
+                    {
+                        if (fila.HasRows)
+                        {
+
+                            while (fila.Read())
+                            {
+
+                               
+                             
+                                objAprendiz.idAprendiz = int.Parse(fila["idAprendiz"].ToString());
+                                objAprendiz.nombreAprendiz = fila["nombreAprendiz"].ToString();
+                                objAprendiz.apellidoAprendiz = fila["apellidoAprendiz"].ToString();
+                                objAprendiz.emailAprendiz = fila["emailAprendiz"].ToString();
+                                objAprendiz.validarAprendiz = true;
+
+                            }
+
+                        }
+                        else
+                        {
+                            objAprendiz.validarAprendiz = false;
+                        }
+
+
+                        fila.Close();
+                        objConexion.mtdCerrarConexion();
+                    }
+
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine($"Error al recuperar datos del aprendiz: {e.Message}");
+                }
+
+
+
+            }
+            else
+            {
+
+                if (idAprendiz != 0 && contrasena != null)
+                {
+                    try
+                    {
+
+
+                        SqlCommand cmd = new SqlCommand("spRecuperarContrasenaAp", objConexion.mtdAbrirConexion());
+                        cmd.Parameters.AddWithValue("@idAprendiz", idAprendiz);
+                        cmd.Parameters.AddWithValue("@contrasenaAprendiz", contrasena);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.ExecuteNonQuery();
+                        objAprendiz.validarAprendiz = true;
+
+                    }
+                    catch (Exception e)
+                    {
+                        objAprendiz.validarAprendiz = false;
+                        Console.WriteLine("error "+e.Message);
+                    }
+                }
+                else
+                {
+
+                    objAprendiz.validarAprendiz = false;
+
+                }
+
+            }
+
+
+            return objAprendiz;
+
+        }
 
     }
 
