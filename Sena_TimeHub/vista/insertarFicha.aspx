@@ -213,6 +213,84 @@
             .footer a:hover {
                 text-decoration: underline;
             }
+
+        .file-upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+            max-width: 300px;
+        }
+
+            .file-upload-container label {
+                font-weight: bold;
+            }
+
+            .file-upload-container input[type="file"] {
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+            }
+
+                .file-upload-container input[type="file"]:hover {
+                    background-color: #e9ecef;
+                    transform: scale(1.05);
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
+
+        .form-group-jor {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+        }
+
+            .form-group-jor label {
+                font-weight: bold;
+            }
+
+            .form-group-jor select {
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                width: 100%;
+            }
+
+                .form-group-jor select:hover {
+                    background-color: #e9ecef;
+                    transform: scale(1.05);
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
+
+        .form-group-pro {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+        }
+
+            .form-group-pro select {
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                width: 100%;
+            }
+
+                .form-group-pro select:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
+
+      
     </style>
 </asp:Content>
 
@@ -231,7 +309,22 @@
             <asp:TextBox ID="txtNumeroFicha" runat="server" CssClass="form-control" placeholder="Ingrese el número de ficha" required="required"></asp:TextBox>
         </div>
 
-        <div class="form-group">
+        <div class="form-group-text">
+            <asp:Label ID="lblFechaInicio" runat="server" Text="Fecha de Inicio" CssClass="form-label" AssociatedControlID="txtFechaInicio"></asp:Label>
+            <asp:TextBox ID="txtFechaInicio" runat="server" CssClass="form-control" TextMode="Date" required="required" />
+        </div>
+
+        <div class="form-group-text">
+            <asp:Label ID="lblFechaFinal" runat="server" Text="Fecha Final" CssClass="form-label" AssociatedControlID="txtFechaFinal"></asp:Label>
+            <asp:TextBox ID="txtFechaFinal" runat="server" CssClass="form-control" TextMode="Date" required="required" />
+        </div>
+        <div class="form-group-pro">
+            <asp:Label ID="lblPrograma" runat="server" Text="Programa" CssClass="form-label" AssociatedControlID="ddlPrograma"></asp:Label>
+            <asp:DropDownList ID="ddlPrograma" runat="server" CssClass="form-control" AutoPostBack="false" AppendDataBoundItems="false">
+                <asp:ListItem Text="Seleccione un programa" Value="0" />
+            </asp:DropDownList>
+        </div>
+        <div class="form-group-jor">
             <asp:Label ID="lblJornadaFicha" runat="server" Text="Jornada" CssClass="form-label" AssociatedControlID="ddlJornadaFicha"></asp:Label>
             <asp:DropDownList ID="ddlJornadaFicha" runat="server" CssClass="form-control">
                 <asp:ListItem Text="Seleccione..." Value="0"></asp:ListItem>
@@ -240,26 +333,11 @@
                 <asp:ListItem Text="Noche" Value="Noche"></asp:ListItem>
             </asp:DropDownList>
         </div>
-
-
-        <div class="form-group">
-            <asp:Label ID="lblPrograma" runat="server" Text="Programa" CssClass="form-label" AssociatedControlID="ddlPrograma"></asp:Label>
-            <asp:DropDownList ID="ddlPrograma" runat="server" CssClass="form-control" AutoPostBack="false" AppendDataBoundItems="false">
-                <asp:ListItem Text="Seleccione un programa" Value="0" />
-            </asp:DropDownList>
+        <div class="file-upload-container">
+            <label for="fuUsuarios" class="form-label">Subir Excel de Aprendices:</label>
+            <asp:FileUpload ID="fuUsuarios" runat="server" CssClass="form-control" />
         </div>
-
-        <div class="form-group">
-            <asp:Label ID="lblFechaInicio" runat="server" Text="Fecha de Inicio" CssClass="form-label" AssociatedControlID="txtFechaInicio"></asp:Label>
-            <asp:TextBox ID="txtFechaInicio" runat="server" CssClass="form-control" TextMode="Date" required="required" />
-        </div>
-
-        <div class="form-group">
-            <asp:Label ID="lblFechaFinal" runat="server" Text="Fecha Final" CssClass="form-label" AssociatedControlID="txtFechaFinal"></asp:Label>
-            <asp:TextBox ID="txtFechaFinal" runat="server" CssClass="form-control" TextMode="Date" required="required" />
-        </div>
-        <label for="fuUsuarios" class="form-label">Subir Excel de Usuarios:</label>
-<asp:FileUpload ID="fuUsuarios" runat="server" /><br />
+        <br />
         <div class="form-group">
             <asp:Button ID="btnGuardarFicha" runat="server" Text="Guardar" CssClass="btn-submit" OnClick="btnGuardarFicha_Click" />
         </div>

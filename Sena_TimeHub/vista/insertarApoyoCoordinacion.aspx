@@ -213,6 +213,28 @@
             .footer a:hover {
                 text-decoration: underline;
             }
+            
+        .form-group-ddl {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+        }
+
+            .form-group-ddl select {
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                width: 100%;
+            }
+
+                .form-group-ddl select:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" class="main-content" ContentPlaceHolderID="body" runat="server">
@@ -231,7 +253,7 @@
             <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ControlToValidate="txtApellido"
                 ErrorMessage="El apellido es requerido" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
-        <div class="form-group">
+        <div class="form-group-ddl">
             <asp:Label ID="lblTipoDocumento" runat="server" Text="Tipo de Documento" CssClass="form-label" AssociatedControlID="ddlTipoDocumento"></asp:Label>
             <asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-control">
                 <asp:ListItem Text="Seleccione el tipo de documento" Value=""></asp:ListItem>

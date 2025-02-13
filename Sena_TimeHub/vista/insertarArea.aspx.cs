@@ -18,7 +18,7 @@ namespace Sena_TimeHub.vista
         protected void btnRegistrarArea_Click(object sender, EventArgs e)
         {
             string nombreArea = txtNombreArea.Text.Trim();
-            string tipo = txtTipoArea.Text.Trim();
+            string tipo = ddlTipoArea.SelectedValue;
 
             if (!string.IsNullOrEmpty(nombreArea) || !string.IsNullOrEmpty(tipo))
             {
@@ -44,6 +44,7 @@ namespace Sena_TimeHub.vista
         private void ClearFields()
         {
             txtNombreArea.Text = string.Empty;
+            
         }
     }
 }
