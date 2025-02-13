@@ -16,7 +16,6 @@ namespace Sena_TimeHub.datos
 
         public bool RegistrarAprendiz(clAprendizE oData, clFichaE oF)
         {
-            
             SqlConnection connection = conexion.mtdAbrirConexion();
             SqlCommand command = new SqlCommand("RegistrarAprendizConFicha", connection);
             bool exito = false;
@@ -24,11 +23,15 @@ namespace Sena_TimeHub.datos
             {
                 command.CommandType = CommandType.StoredProcedure;
 
+
+                // Los nombres de los parámetros ahora coinciden con los del procedimiento almacenado
+
                 command.Parameters.AddWithValue("@nombreAprendiz", oData.nombreAprendiz);
                 command.Parameters.AddWithValue("@apellidoAprendiz", oData.apellidoAprendiz);
                 command.Parameters.AddWithValue("@tipoDocumentoAprendiz", oData.tipoDocumentoAprendiz);
                 command.Parameters.AddWithValue("@documentoAprendiz", oData.documentoAprendiz);
                 command.Parameters.AddWithValue("@emailAprendiz", oData.emailAprendiz);
+
 
                 command.Parameters.AddWithValue("@idFicha", oF.idFicha);
                 int filasAfectadas = command.ExecuteNonQuery();
@@ -36,8 +39,9 @@ namespace Sena_TimeHub.datos
                 {
                     exito = true;
                 }
+
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -45,10 +49,10 @@ namespace Sena_TimeHub.datos
             {
                 conexion.mtdCerrarConexion();
             }
-            
-            return exito;
 
+            return exito;
         }
+
 
 
 

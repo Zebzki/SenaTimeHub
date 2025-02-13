@@ -10,7 +10,7 @@ namespace Datos
     public class CInsertarHorarioD
     {
       
-        public string InsertarHorario(clHorario horario)
+        public string InsertarHorario(clHorarioI horario)
         {
             string mensaje = string.Empty;
             clConexion con = new clConexion();

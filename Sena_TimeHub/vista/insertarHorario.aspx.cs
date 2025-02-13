@@ -82,7 +82,7 @@ namespace Sena_TimeHub.vista
                     return;
                 }
 
-                clHorario nuevoHorario = new clHorario
+                clHorarioI nuevoHorario = new clHorarioI
                 {
                     IdInstructor = Convert.ToInt32(ddlInstructor.SelectedValue),
                     IdFicha = Convert.ToInt32(ddlFicha.SelectedValue),

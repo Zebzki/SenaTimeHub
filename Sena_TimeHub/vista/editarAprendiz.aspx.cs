@@ -11,15 +11,14 @@ namespace Sena_TimeHub.vista
         {
             if (!IsPostBack)
             {
-                string idAprendizURL = Request.QueryString["idAprendiz"];
-                
-                if (!string.IsNullOrWhiteSpace(idAprendizURL) && int.TryParse(idAprendizURL, out int idAprendiz))
+                string idUsuarioURL = Request.QueryString["idUsuario"];
+                if (!string.IsNullOrWhiteSpace(idUsuarioURL) && int.TryParse(idUsuarioURL, out int idUsuario))
                 {
-                    CargarAprendiz(idAprendiz);
+                    CargarAprendiz(idUsuario);
                 }
                 else
                 {
-                    MostrarMensaje("ID de Aprendiz no válido.");
+                    MostrarMensaje("ID de usuario no válido.");
                 }
             }
         }
@@ -29,18 +28,19 @@ namespace Sena_TimeHub.vista
             try
             {
                 clObtenerAprendicesYUsuariosLcs oLogica = new clObtenerAprendicesYUsuariosLcs();
-                clAprendizE oAprendiz = oLogica.ObtenerAprendizPorId(id);
-                if (oAprendiz != null)
+                clAprendizE oUsuario = oLogica.ObtenerAprendizPorId(id);
+
+                if (oUsuario != null)
                 {
-                    txtNombre.Text = oAprendiz.nombreAprendiz;
-                    txtApellido.Text = oAprendiz.apellidoAprendiz;
-                    ddlTipoDocumento.SelectedValue = oAprendiz.tipoDocumentoAprendiz;
-                    txtDocumento.Text = oAprendiz.documentoAprendiz;
-                    txtEmail.Text = oAprendiz.emailAprendiz;
+                    txtNombre.Text = oUsuario.nombreAprendiz;
+                    txtApellido.Text = oUsuario.apellidoAprendiz;
+                    ddlTipoDocumento.SelectedValue = oUsuario.tipoDocumentoAprendiz;
+                    txtDocumento.Text = oUsuario.documentoAprendiz ;
+                    txtEmail.Text = oUsuario.emailAprendiz;
                 }
                 else
                 {
-                    MostrarMensaje("Aprendiz no encontrado.");
+                    MostrarMensaje("Usuario no encontrado.");
                 }
             }
             catch (Exception ex)
@@ -53,18 +53,18 @@ namespace Sena_TimeHub.vista
         {
             try
             {
-                clAprendizE oAprendiz = new clAprendizE()
+                clAprendizE oUsuario = new clAprendizE
                 {
-                    idAprendiz = int.Parse(Request.QueryString["idAprendiz"]),
+                    idAprendiz = int.Parse(Request.QueryString["idUsuario"]),
                     nombreAprendiz = string.IsNullOrWhiteSpace(txtNombre.Text) ? null : txtNombre.Text,
                     apellidoAprendiz = string.IsNullOrWhiteSpace(txtApellido.Text) ? null : txtApellido.Text,
-                   tipoDocumentoAprendiz = string.IsNullOrWhiteSpace(ddlTipoDocumento.SelectedValue) ? null : ddlTipoDocumento.SelectedValue,
+                    tipoDocumentoAprendiz = string.IsNullOrWhiteSpace(ddlTipoDocumento.SelectedValue) ? null : ddlTipoDocumento.SelectedValue,
                     documentoAprendiz = string.IsNullOrWhiteSpace(txtDocumento.Text) ? null : txtDocumento.Text,
                     emailAprendiz = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text,
                 };
 
                 clEditarAprendizL oLogica = new clEditarAprendizL();
-                bool exito = oLogica.EditarAprendiz(oAprendiz); // Método para actualizar aprendiz
+                bool exito = oLogica.EditarAprendiz(oUsuario); // Método para actualizar aprendiz
 
                 if (exito)
                 {

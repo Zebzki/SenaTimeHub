@@ -15,7 +15,7 @@ namespace Sena_TimeHub.logica
             datosHorario = new CInsertarHorarioD();
         }
 
-        public string RegistrarHorario(clHorario horario)
+        public string RegistrarHorario(clHorarioI horario)
         {
            
             if (horario == null)

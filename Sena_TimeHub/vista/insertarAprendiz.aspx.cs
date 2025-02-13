@@ -16,41 +16,52 @@ namespace Sena_TimeHub.vista
             if (!IsPostBack)
             {
                 CargarFichasI();
+
+                // Verifica si hay una alerta que mostrar después de la carga
+                if (Session["RegistroExitoso"] != null)
+                {
+                    if ((bool)Session["RegistroExitoso"])
+                    {
+                        MostrarAlerta("Registrado correctamente!", "success");
+                    }
+                    else
+                    {
+                        MostrarAlerta("No se registró el aprendiz", "error");
+                    }
+
+                    // Limpia el estado de la sesión
+                    Session["RegistroExitoso"] = null;
+                }
             }
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            clAprendizE oAprendiz = new clAprendizE()
+            clAprendizE oUsuario = new clAprendizE()
             {
                 nombreAprendiz = txtNombre.Text,
                 apellidoAprendiz = txtApellido.Text,
                 tipoDocumentoAprendiz = ddlTipoDocumento.SelectedValue,
                 documentoAprendiz = txtDocumento.Text,
                 emailAprendiz = txtEmail.Text,
-       
             };
             clFichaE oFicha = new clFichaE()
             {
-                idFicha = int.Parse( ddlFicha.SelectedValue)
+                idFicha = int.Parse(ddlFicha.SelectedValue)
             };
 
-            bool registroExitoso = registroAprendizLogica.RegistrarAprendiz(oAprendiz,oFicha);
+            bool registroExitoso = registroAprendizLogica.RegistrarAprendiz(oUsuario, oFicha);
+
+            // Almacena el resultado del registro en la sesión
+            Session["RegistroExitoso"] = registroExitoso;
 
             if (registroExitoso)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert", "Swal.fire('Registrado correctamente!');", true);
                 LimpiarFormulario();
-                Response.Redirect(Request.RawUrl);
-                pnlAlert.Visible = true;
-                pnlAlert.GroupingText = "Registro Exitoso!!!";
             }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert", "Swal.fire({\r\n  icon: \"error\",\r\n  title: \"Oops...\",\r\n  text: \"No se registro el aprendiz\",\r\n});\r\n", true);
 
-
-            }
+            // Recarga la página para mostrar la alerta correspondiente
+            Response.Redirect(Request.RawUrl);
         }
 
         private void CargarFichasI()
@@ -69,8 +80,7 @@ namespace Sena_TimeHub.vista
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert", "Swal.fire({\r\n  icon: \"error\",\r\n  title: \"Oops...\",\r\n  text: \"Error al cargar las fichas\",\r\n});\r\n", true);
-
+                MostrarAlerta("Error al cargar las fichas", "error");
             }
         }
 
@@ -81,8 +91,16 @@ namespace Sena_TimeHub.vista
             ddlTipoDocumento.SelectedIndex = 0;
             txtDocumento.Text = "";
             txtEmail.Text = "";
-            
             ddlFicha.SelectedIndex = 0;
+        }
+
+        private void MostrarAlerta(string mensaje, string tipo)
+        {
+            string script = tipo == "success"
+                ? $"Swal.fire('{mensaje}', '', '{tipo}');"
+                : $"Swal.fire({{ icon: '{tipo}', title: 'Oops...', text: '{mensaje}' }});";
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "SweetAlert", script, true);
         }
     }
 }

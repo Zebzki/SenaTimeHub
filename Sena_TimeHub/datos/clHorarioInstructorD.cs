@@ -10,11 +10,11 @@ namespace Sena_TimeHub.datos
     public class clHorarioInstructorD
     {
 
-        public List<clHorario> mtdHorarioInstructor(int idInstructor)
+        public List<clHorarioI> mtdHorarioInstructor(int idInstructor)
         {
             clConexion con = new clConexion();
             SqlConnection cone = con.mtdAbrirConexion();
-            List<clHorario> horarios = new List<clHorario>();
+            List<clHorarioI> horarios = new List<clHorarioI>();
 
             List<DateTime> fechasCanceladas = mtdObtenerFechasCanceladas(idInstructor);
             try
@@ -28,7 +28,7 @@ namespace Sena_TimeHub.datos
                     {
                         while (reader.Read())
                         {
-                            clHorario horario = new clHorario
+                            clHorarioI horario = new clHorarioI
                             {
                                 idHorario = reader.GetInt32(reader.GetOrdinal("idHorario")),
                                 fechaInicio = reader.GetDateTime(reader.GetOrdinal("fechaInicio")),
@@ -37,7 +37,7 @@ namespace Sena_TimeHub.datos
                                 horaFinal = reader.GetTimeSpan(reader.GetOrdinal("horaFinal")),
                                 ficha = reader.GetString(reader.GetOrdinal("ficha")),
                                 ambiente = reader.GetString(reader.GetOrdinal("ambiente")),
-
+                          
                                 dias = new List<string>()
                             };
 
@@ -55,7 +55,7 @@ namespace Sena_TimeHub.datos
                                 if (horario.dias.Contains(dayOfWeek))
                                 {
                                     bool esCancelada = fechasCanceladas.Contains(currentDate);
-                                    clHorario dayHorario = new clHorario
+                                    clHorarioI dayHorario = new clHorarioI
                                     {
                                         idHorario = horario.idHorario,
                                         fechaInicio = currentDate,

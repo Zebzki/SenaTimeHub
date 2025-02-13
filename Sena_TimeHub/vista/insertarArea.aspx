@@ -111,4 +111,5 @@
             <asp:Button ID="btnRegistrarArea" runat="server" Text="Registrar" CssClass="btn-submit" OnClick="btnRegistrarArea_Click" ValidationGroup="error" />
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </asp:Content>
