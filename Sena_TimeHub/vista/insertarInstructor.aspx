@@ -213,6 +213,28 @@
             .footer a:hover {
                 text-decoration: underline;
             }
+            
+        .form-group-ddl{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+        }
+
+            .form-group-ddl select {
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                width: 100%;
+            }
+
+                .form-group-ddl select:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
@@ -226,7 +248,7 @@
             <label class="form-label">Apellido</label>
             <asp:TextBox ID="txtApellido" runat="server" placeholder="Apellido" CssClass="form-control"></asp:TextBox>
         </div>
-        <div class="form-group">
+        <div class="form-group-ddl">
             <label class="form-label">Tipo de Documento</label>
             <asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-control">
                 <asp:ListItem Value="C.C">Cédula de Ciudadanía</asp:ListItem>
@@ -245,7 +267,7 @@
             <asp:TextBox ID="txtEmail" runat="server" placeholder="Correo Electrónico" CssClass="form-control"></asp:TextBox>
 
         </div>
-        <div class="form-group">
+        <div class="form-group-ddl">
             <label class="form-label">Area</label>
             <asp:DropDownList ID="ddlArea" runat="server" CssClass="form-control">
                 <asp:ListItem Value="" Text="Seleccione el area"></asp:ListItem>

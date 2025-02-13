@@ -66,7 +66,7 @@
                                                     <div class="modal-body">
 
                                                         <h5 style="text-align: center;" id="txtMensaje3" runat="server"></h5>
-                                                        <asp:TextBox ID="txtContrasena" CssClass="form-control" TextMode="Password" placeholder="no mas de 8 digitos" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtContrasena" CssClass="form-control" TextMode="Password" placeholder="minimo 8 digitos" runat="server"></asp:TextBox>
 
                                                     </div>
                                                     <div class="modal-footer">

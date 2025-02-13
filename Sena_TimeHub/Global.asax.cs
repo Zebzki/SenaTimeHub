@@ -28,6 +28,9 @@ namespace Sena_TimeHub
             Session["usuario"] = null;
             Session["rol"] = null;
             Session["idUsuario"] = null;
+            Session["idAprendiz"] = null;
+            Session["aprendiz"] = null;
+
             Session["autenticacion"] = "";
             Session["correoUsuario"] = "";
             Session["ruta"] = "";
@@ -56,7 +59,6 @@ namespace Sena_TimeHub
             Session["idAprendiz"] = null;
             Session["rol"] = null ;
             Session["idUsuario"] = null;
-            Session["tipoUsuario"] = null;
             Session["autenticacion"] = "";
             Session["correoUsuario"] = "";
             Session["ruta"] = "";

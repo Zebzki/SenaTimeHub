@@ -213,6 +213,55 @@
             .footer a:hover {
                 text-decoration: underline;
             }
+
+        .form-group-ddl {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+        }
+
+            .form-group-ddl select {
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                width: 100%;
+            }
+
+                .form-group-ddl select:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
+
+        .form-group-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+            max-width: 300px;
+        }
+
+            .form-group-upload label {
+                font-weight: bold;
+            }
+
+            .form-group-upload input[type="file"] {
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+            }
+
+                .form-group-upload input[type="file"]:hover {
+                    background-color: #e9ecef;
+                    transform: scale(1.05);
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
     </style>
 
 </asp:Content>
@@ -237,20 +286,21 @@
             <asp:RequiredFieldValidator ID="valAmbiente" runat="server" ControlToValidate="txtAmbiente" ErrorMessage="Campo de Ambiente Obligatorio!" CssClass="text-danger" Display="Dynamic" ValidationGroup="error" />
         </div>
 
-        <div class="form-group">
-            <asp:Label ID="lblImagen" runat="server" Text="Imagen Del Ambiente" CssClass="form-label" AssociatedControlID="fuImagen"></asp:Label>
-            <asp:FileUpload ID="fuImagen" runat="server" CssClass="form-control" placeholder="Imagen Del Ambiente"></asp:FileUpload>
-            <asp:RequiredFieldValidator ID="valImagen" runat="server" ControlToValidate="fuImagen" ErrorMessage="Archivo de Imagen Obligatorio!" CssClass="text-danger" Display="Dynamic" ValidationGroup="error" />
-        </div>
-        <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
 
-        <div class="form-group">
+        <div class="form-group-ddl">
             <asp:Label ID="lblSede" runat="server" Text="Sede" CssClass="form-label" AssociatedControlID="ddlSede"></asp:Label>
             <asp:DropDownList ID="ddlSede" runat="server" CssClass="form-control">
                 <asp:ListItem Text="Seleccione la Sede" Value=""></asp:ListItem>
             </asp:DropDownList>
             <asp:RequiredFieldValidator ID="valSede" runat="server" ControlToValidate="ddlSede" ErrorMessage="Seleccion de Sede Obligatorio!" CssClass="text-danger" Display="Dynamic" ValidationGroup="error" />
         </div>
+        <div class="form-group-upload">
+            <asp:Label ID="lblImagen" runat="server" Text="Imagen Del Ambiente" CssClass="form-label" AssociatedControlID="fuImagen"></asp:Label>
+            <asp:FileUpload ID="fuImagen" runat="server" CssClass="form-control" placeholder="Imagen Del Ambiente"></asp:FileUpload>
+            <asp:RequiredFieldValidator ID="valImagen" runat="server" ControlToValidate="fuImagen" ErrorMessage="Archivo de Imagen Obligatorio!" CssClass="text-danger" Display="Dynamic" ValidationGroup="error" />
+        </div>
+        <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
+
 
         <div class="form-group">
             <asp:Button ID="btnRegistrarAmbiente" runat="server" Text="Registrar" CssClass="btn-submit" OnClick="btnRegistrarAmbiente_Click" ValidationGroup="error" />

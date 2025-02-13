@@ -213,6 +213,28 @@
             .footer a:hover {
                 text-decoration: underline;
             }
+            
+        .form-group-ddl {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+        }
+
+            .form-group-ddl select {
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                width: 100%;
+            }
+
+                .form-group-ddl select:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                }
     </style>
 
 </asp:Content>
@@ -251,7 +273,7 @@
             <asp:Label ID="lblApellido" runat="server" Text="Apellido" CssClass="form-label" AssociatedControlID="txtApellido"></asp:Label>
             <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" placeholder="Ingrese el apellido" required="required"></asp:TextBox>
         </div>
-        <div class="form-group">
+        <div class="form-group-ddl">
             <asp:Label ID="lblTipoDocumento" runat="server" Text="Tipo de Documento" CssClass="form-label" AssociatedControlID="ddlTipoDocumento"></asp:Label>
             <asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-control">
                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
@@ -270,7 +292,7 @@
             <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Ingrese el email" required="required"></asp:TextBox>
         </div>
 
-        <div class="form-group">
+        <div class="form-group-ddl">
             <asp:Label ID="lblFicha" runat="server" Text="Ficha" CssClass="form-label" AssociatedControlID="ddlFicha"></asp:Label>
             <asp:DropDownList ID="ddlFicha" runat="server" CssClass="form-control" AutoPostBack="false" AppendDataBoundItems="true">
                 <asp:ListItem Text="Seleccione ficha..." Value=""></asp:ListItem>

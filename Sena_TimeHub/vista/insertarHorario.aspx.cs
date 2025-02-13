@@ -110,6 +110,7 @@ namespace Sena_TimeHub.vista
                     EnviarCorreo(correo, asunto, mensaje);
                 }
                 ScriptManager.RegisterStartupScript(this, GetType(), "alerta", $"alert('{resultado}'); ", true);
+                limpiarCampos();
             }
             catch (FormatException)
             {
@@ -119,6 +120,26 @@ namespace Sena_TimeHub.vista
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "alerta", $"alert('Error al registrar el horario: {ex.Message}');", true);
             }
+        }
+        private void limpiarCampos()
+        {
+            ddlInstructor.SelectedIndex = 0;
+            ddlFicha.SelectedIndex = 0;
+            ddlAmbiente.SelectedIndex = 0;
+
+
+            txtFechaInicio.Text = string.Empty;
+            txtFechaFinal.Text = string.Empty;
+            txtHoraInicio.Text = string.Empty;
+            txtHoraFinal.Text = string.Empty;
+
+
+            chkLunes.Checked = false;
+            chkMartes.Checked = false;
+            chkMiercoles.Checked = false;
+            chkJueves.Checked = false;
+            chkViernes.Checked = false;
+            chkSabado.Checked = false;
         }
         private static void EnviarCorreo(string destinatario, string asunto, string mensaje)
         {

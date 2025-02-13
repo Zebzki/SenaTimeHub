@@ -247,22 +247,7 @@
                 text-decoration: underline;
             }
     </style>
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            if (body.classList.contains('light-mode')) {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-            } else if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                localStorage.setItem('theme', 'light');
-            }
-        }
 
-      
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="form-container">
@@ -281,9 +266,7 @@
                 </div>
                 <asp:Button ID="btnChangePassword" runat="server" Text="Cambiar Contraseña" OnClick="btnChangePassword_Click" CssClass="btn" />
             </div>
-            <div class="col-md-6">
-                <button type="button" class="btn" onclick="toggleTheme()">Alternar Modo Oscuro/Claro</button>
-            </div>
+           
 
         </div>
 
