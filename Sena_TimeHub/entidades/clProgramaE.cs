@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Sena_TimeHub.entidades
 {
-    public class clProgramaE
+    public class clProgramaE : clAmbienteE
     {
 
         public int idPrograma { get; set; }

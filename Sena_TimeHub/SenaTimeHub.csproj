@@ -52,6 +52,9 @@
     <Reference Include="EPPlus.System.Drawing, Version=7.5.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.System.Drawing.7.5.0\lib\net462\EPPlus.System.Drawing.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
@@ -96,11 +99,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.css" />
@@ -169,6 +167,7 @@
     <Content Include="vista\dashboardInstructor.aspx" />
     <Content Include="vista\editarApoyoCoordinacion.aspx" />
     <Content Include="vista\editarAprendiz.aspx" />
+    <Content Include="vista\editarHorario.aspx" />
     <Content Include="vista\editarInstructor.aspx" />
     <Content Include="vista\editarSede.aspx" />
     <Content Include="vista\horariosInstructor.aspx" />
@@ -193,6 +192,7 @@
     <Content Include="vista\listarApoyoCoordinacion.aspx" />
     <Content Include="vista\listarAprendices.aspx" />
     <Content Include="vista\listarFicha.aspx" />
+    <Content Include="vista\listarHorario.aspx" />
     <Content Include="vista\listarInstructor.aspx" />
     <Content Include="vista\listarAmbiente.aspx" />
     <Content Include="vista\listarPrograma.aspx" />
@@ -209,8 +209,10 @@
     <Compile Include="datos\clAprendizD.cs" />
     <Compile Include="datos\clConexion.cs" />
     <Compile Include="datos\clEditarAprendiz.cs" />
+    <Compile Include="datos\clEditarHorarioD.cs" />
     <Compile Include="datos\clEliminarAprendices.cs" />
     <Compile Include="datos\clEliminarCoordinacionD.cs" />
+    <Compile Include="datos\clEliminarHorarioD.cs" />
     <Compile Include="datos\clEliminarInstructor.cs" />
     <Compile Include="datos\clEliminarSedeD.cs" />
     <Compile Include="datos\clFichaD.cs" />
@@ -220,6 +222,7 @@
     <Compile Include="datos\clListarAprendicesD.cs" />
     <Compile Include="datos\clListarCoordinacionD.cs" />
     <Compile Include="datos\clListarFichaD.cs" />
+    <Compile Include="datos\clListarHorarioD.cs" />
     <Compile Include="datos\clListarInstructorD.cs" />
     <Compile Include="datos\clListarProgramaD.cs" />
     <Compile Include="datos\clObtenerAprendicesYUsuarios.cs" />
@@ -255,7 +258,9 @@
     <Compile Include="logica\clActualizarSedeL.cs" />
     <Compile Include="logica\clAprendizL.cs" />
     <Compile Include="logica\clEditarAprendizL.cs" />
+    <Compile Include="logica\clEditarHorarioL.cs" />
     <Compile Include="logica\clEliminarAprendizL.cs" />
+    <Compile Include="logica\clEliminarHorarioL .cs" />
     <Compile Include="logica\clEliminarSedeL.cs" />
     <Compile Include="logica\clEliminarCoordinacionL.cs" />
     <Compile Include="logica\clEliminarInstructorL.cs" />
@@ -267,6 +272,7 @@
     <Compile Include="logica\clListarAprendicesL.cs" />
     <Compile Include="logica\clListarCoordinacionL.cs" />
     <Compile Include="logica\clListarFichaL.cs" />
+    <Compile Include="logica\clListarHorarioL.cs" />
     <Compile Include="logica\clListarInstructorL.cs" />
     <Compile Include="logica\clListarProgramaL.cs" />
     <Compile Include="logica\clObtenerAprendicesYUsuariosLcs.cs" />
@@ -317,6 +323,13 @@
     </Compile>
     <Compile Include="vista\editarAprendiz.aspx.designer.cs">
       <DependentUpon>editarAprendiz.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vista\editarHorario.aspx.cs">
+      <DependentUpon>editarHorario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\editarHorario.aspx.designer.cs">
+      <DependentUpon>editarHorario.aspx</DependentUpon>
     </Compile>
     <Compile Include="vista\editarInstructor.aspx.cs">
       <DependentUpon>editarInstructor.aspx</DependentUpon>
@@ -451,6 +464,13 @@
     <Compile Include="vista\listarFicha.aspx.designer.cs">
       <DependentUpon>listarFicha.aspx</DependentUpon>
     </Compile>
+    <Compile Include="vista\listarHorario.aspx.cs">
+      <DependentUpon>listarHorario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vista\listarHorario.aspx.designer.cs">
+      <DependentUpon>listarHorario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vista\listarInstructor.aspx.cs">
       <DependentUpon>listarInstructor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -546,7 +566,7 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauraci�n de paquetes NuGet para descargarlos. Para obtener m�s informaci�n, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>

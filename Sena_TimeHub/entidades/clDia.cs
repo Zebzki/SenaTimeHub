@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Sena_TimeHub.entidades
 {
-    public class clDia
+    public class clDia : clFichaE
     {
         public int idDia { get; set; }
         public bool lunes { get; set; }
