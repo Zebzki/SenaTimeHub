@@ -123,6 +123,24 @@ namespace Sena_TimeHub.vista
         protected global::System.Web.UI.WebControls.DropDownList ddlJornadaFicha;
 
         /// <summary>
+        /// Control lblSede.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSede;
+
+        /// <summary>
+        /// Control ddlSede.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSede;
+
+        /// <summary>
         /// Control fuUsuarios.
         /// </summary>
         /// <remarks>

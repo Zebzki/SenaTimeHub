@@ -333,6 +333,15 @@
                 <asp:ListItem Text="Noche" Value="Noche"></asp:ListItem>
             </asp:DropDownList>
         </div>
+        <div class="form-group-jor">
+       <asp:Label ID="lblSede" runat="server" Text="Sede" CssClass="form-label" AssociatedControlID="ddlSede"></asp:Label>
+
+       <asp:DropDownList ID="ddlSede" runat="server" CssClass="form-control" AutoPostBack="false" AppendDataBoundItems="false">
+           <asp:ListItem Text="Seleccione una sede" Value="0"></asp:ListItem>
+
+       </asp:DropDownList>
+
+   </div>
         <div class="file-upload-container">
             <label for="fuUsuarios" class="form-label">Subir Excel de Aprendices:</label>
             <asp:FileUpload ID="fuUsuarios" runat="server" CssClass="form-control" />

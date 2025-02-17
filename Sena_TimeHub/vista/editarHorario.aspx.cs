@@ -11,7 +11,7 @@ namespace Sena_TimeHub.vista
     {
        
             private clEditarHorarioL horarioLogica = new clEditarHorarioL();
-
+            private clObtenerInstructorL instructorLogica = new clObtenerInstructorL();
 
         private clInsertarHorarioL logicaHorario;
         protected void Page_Load(object sender, EventArgs e)
@@ -19,9 +19,10 @@ namespace Sena_TimeHub.vista
             logicaHorario = new clInsertarHorarioL();
             if (!IsPostBack)
                 {
+                    CargarInstructor();
 
                 CargarDisponibilidad();
-                    // Obtener el ID del horario a editar desde la URL
+                    
                     int idHorario;
                     if (Request.QueryString["idHorario"] != null && int.TryParse(Request.QueryString["idHorario"], out idHorario))
                     {
@@ -36,6 +37,33 @@ namespace Sena_TimeHub.vista
             }
 
 
+
+        private void CargarInstructor()
+        {
+            try
+            {
+                List<clUsuarioE> listarInstructor = instructorLogica.ObtenerInstructor();
+
+                ddlInstructor.Items.Clear();
+                if (listarInstructor != null && listarInstructor.Count > 0)
+                {
+                    foreach (clUsuarioE instructor in listarInstructor)
+                    {
+                        string texto = $"{instructor.nombre}  {instructor.apellido}";
+                        ddlInstructor.Items.Add(new ListItem(texto, instructor.idUsuario.ToString()));
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('Error al cargar Instrcutor!!');", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('Error al cargar Instructor: {ex.Message}');", true);
+            }
+        }
+
         private void CargarDisponibilidad()
         {
             try
@@ -44,13 +72,7 @@ namespace Sena_TimeHub.vista
 
                 if (disponibilidad != null && disponibilidad.Count > 0)
                 {
-                    if (disponibilidad.ContainsKey("Instructores"))
-                    {
-                        ddlInstructor.DataSource = disponibilidad["Instructores"];
-                        ddlInstructor.DataTextField = "NombreInstructor";
-                        ddlInstructor.DataValueField = "IdInstructor";
-                        ddlInstructor.DataBind();
-                    }
+                    
                     ddlInstructor.Items.Insert(0, new ListItem("Seleccione un Instructor", "0"));
 
                     if (disponibilidad.ContainsKey("Fichas"))
