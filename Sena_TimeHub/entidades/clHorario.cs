@@ -16,6 +16,9 @@ namespace Sena_TimeHub.entidades
         public string ambiente { get; set; }
         public string ficha { get; set; }
         public bool esCancelada { get; set; }
+        public string nombreMateria { get; set; }
+        public string tipoMateria { get; set; }
+        public string instructor { get; set; }
         public List<string> dias { get; set; }
         public clHorario()
         {
