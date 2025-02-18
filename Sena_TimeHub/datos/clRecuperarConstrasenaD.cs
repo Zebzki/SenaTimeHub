@@ -51,7 +51,7 @@ namespace Sena_TimeHub.datos
 
 
                         fila.Close();
-                        objConexion.mtdCerrarConexion();
+
                     }
 
 
@@ -60,6 +60,10 @@ namespace Sena_TimeHub.datos
                 {
 
                     Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    objConexion.mtdCerrarConexion();
                 }
 
 
@@ -78,14 +82,18 @@ namespace Sena_TimeHub.datos
                         cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
                         cmd.Parameters.AddWithValue("@contrasena", contrasena);
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.ExecuteNonQuery();
-                        objUsuarioE.validar = true;
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        objUsuarioE.validar = filasAfectadas > 0;
 
                     }
                     catch (Exception e)
                     {
                         objUsuarioE.validar = false;
                         Console.WriteLine(e.Message);
+                    }
+                    finally
+                    {
+                        objConexion.mtdCerrarConexion();
                     }
                 }
                 else
@@ -123,8 +131,8 @@ namespace Sena_TimeHub.datos
                             while (fila.Read())
                             {
 
-                               
-                             
+
+
                                 objAprendiz.idAprendiz = int.Parse(fila["idAprendiz"].ToString());
                                 objAprendiz.nombreAprendiz = fila["nombreAprendiz"].ToString();
                                 objAprendiz.apellidoAprendiz = fila["apellidoAprendiz"].ToString();
@@ -141,7 +149,6 @@ namespace Sena_TimeHub.datos
 
 
                         fila.Close();
-                        objConexion.mtdCerrarConexion();
                     }
 
 
@@ -150,6 +157,11 @@ namespace Sena_TimeHub.datos
                 {
 
                     Console.WriteLine($"Error al recuperar datos del aprendiz: {e.Message}");
+                }
+                finally
+                {
+                    objConexion.mtdCerrarConexion();
+
                 }
 
 
@@ -175,7 +187,7 @@ namespace Sena_TimeHub.datos
                     catch (Exception e)
                     {
                         objAprendiz.validarAprendiz = false;
-                        Console.WriteLine("error "+e.Message);
+                        Console.WriteLine("error " + e.Message);
                     }
                 }
                 else

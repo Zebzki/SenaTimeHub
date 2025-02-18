@@ -20,11 +20,10 @@ namespace Sena_TimeHub.datos
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@pass", contraseña);
                     cmd.Parameters.AddWithValue("@IdUsuario", idU);
-                    int filas = cmd.ExecuteNonQuery();
-                    if (filas > 0)
-                    {
+                     cmd.ExecuteNonQuery();
+                    
                         exito = true;
-                    }
+                    
 
                 }
 
@@ -51,11 +50,10 @@ namespace Sena_TimeHub.datos
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@pass", contraseña);
                     cmd.Parameters.AddWithValue("@IdAprendiz", idA);
-                    int filas = cmd.ExecuteNonQuery();
-                    if (filas > 0)
-                    {
+                     cmd.ExecuteNonQuery();
+                   
                         exito = true;
-                    }
+                    
 
                 }
 

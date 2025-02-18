@@ -136,8 +136,10 @@ namespace Sena_TimeHub.vista
         <a href='#'>Gestión Horarios</a>
         <ul class='dropdown-menu'>
             <li><a href='insertarHorario.aspx'>Registrar Horarios</a></li>
+
 <li><a href='listarHorario.aspx'>Modificar Horarios</a></li>
            
+
       
         </ul>
     </li>
@@ -213,7 +215,9 @@ namespace Sena_TimeHub.vista
         <a href='#'>Gestión Horarios</a>
         <ul class='dropdown-menu'>
             <li><a href='insertarHorario.aspx'>Registrar Horarios</a></li>
+
             <li><a href='editarHorario.aspx'>Modificar Horarios</a></li>
+
         </ul>
     </li>
 </ul>";
