@@ -9,12 +9,15 @@ namespace Sena_TimeHub.logica
 {
     public class clFichaL
     {
+
         
         public bool RegistrarFichaYUsuarios(string numeroFicha, DateTime fechaInicio, DateTime fechaFinal, string jornada, int idPrograma,int idSede, DataTable aprendices)
         {
            clFichaD oFicha = new clFichaD();    
             return oFicha.RegistrarFicha(numeroFicha, fechaInicio, fechaFinal, jornada, idPrograma, idSede,  aprendices);
+
         }
+     
         public DataTable CrearTablaUsuarios()
         {
             DataTable table = new DataTable();
@@ -23,8 +26,7 @@ namespace Sena_TimeHub.logica
             table.Columns.Add("tipoDocumento", typeof(string));
             table.Columns.Add("documento", typeof(string));
             table.Columns.Add("email", typeof(string));
-           
-         
+
 
             return table;
         }
@@ -38,6 +40,8 @@ namespace Sena_TimeHub.logica
             clFichaD oFicha = new clFichaD();
             return oFicha.obtenerSede();
         }
-        
+
     }
+   
 }
+

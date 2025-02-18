@@ -11,7 +11,11 @@ namespace Sena_TimeHub.datos
     {
 
         public bool RegistrarFicha(string numeroFicha, DateTime fechaInicio, DateTime fechaFinal,
+
         string jornada, int idPrograma, int idSede, DataTable aprendices)
+
+
+
         {
             clConexion cone = new clConexion();
             bool validacion = false;
@@ -60,7 +64,6 @@ namespace Sena_TimeHub.datos
 
             return validacion;
         }
-
         public List<clProgramaE> ObtenerProgramas()
         {
             clConexion con = new clConexion();
@@ -100,6 +103,44 @@ namespace Sena_TimeHub.datos
             }
 
             return programas;
+        }
+        public List<clSedeE> obtenerSede()
+        {
+            clConexion con = new clConexion();
+            SqlConnection cone = con.mtdAbrirConexion();
+            List<clSedeE> sedes = new List<clSedeE>();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("spObtenerSede", cone))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            clSedeE sede = new clSedeE
+                            {
+                                idSede = reader.GetInt32(reader.GetOrdinal("idSede")),
+                                nombreSede = reader.GetString(reader.GetOrdinal("nombreSede"))
+                            };
+                            sedes.Add(sede);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                con.mtdCerrarConexion();
+            }
+            return sedes;
+
+
         }
 
         public List<clSedeE> obtenerSede()

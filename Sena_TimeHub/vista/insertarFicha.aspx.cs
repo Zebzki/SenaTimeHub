@@ -66,7 +66,9 @@ namespace Sena_TimeHub.vista
                         int lastRow = worksheet.Dimension?.End.Row ?? 0;
 
                         System.Diagnostics.Debug.WriteLine("Número de filas en el archivo Excel: " + rows);
+
                         for (int i = 2; i <= lastRow; i++)
+
                         {
                             string nombre = worksheet.Cells[i, 1].Text.Trim();
                             string apellido = worksheet.Cells[i, 2].Text.Trim();
@@ -75,6 +77,7 @@ namespace Sena_TimeHub.vista
                             string email = worksheet.Cells[i, 5].Text.Trim();
                             if (!string.IsNullOrWhiteSpace(nombre) && !string.IsNullOrWhiteSpace(apellido) &&
                                                  !string.IsNullOrWhiteSpace(tipoDocumento) && !string.IsNullOrWhiteSpace(documento) &&
+
                                                  !string.IsNullOrWhiteSpace(email) )
                             {
                                
@@ -90,14 +93,17 @@ namespace Sena_TimeHub.vista
                                 System.Diagnostics.Debug.WriteLine("Se omitió una fila vacía");
                             }
                           
+
                         }
 
                         System.Diagnostics.Debug.WriteLine("Número de filas en el DataTable aprendices: " + aprendices.Rows.Count);
                     }
+
                 
                 }
                 
                 bool resultado = fichaLogica.RegistrarFichaYUsuarios(numeroFicha, fechaInicio, fechaFinal, jornada, idPrograma,idSede, aprendices);
+
                 if (resultado)
                 {
                     lblMensaje.Text = "Se registro correctamente";
