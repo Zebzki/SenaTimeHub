@@ -13,8 +13,9 @@ namespace Sena_TimeHub.datos
 
         public clConexion()
         {
-
             con = new SqlConnection("Data Source=.;Initial Catalog=dbSenaTimeHub;Integrated Security=True;");
+           
+            //con = new SqlConnection("Data Source=.;Initial Catalog=dbSenaTimeHub;User ID=zebzki;Password=12345;");
 
         }
         public SqlConnection mtdAbrirConexion()

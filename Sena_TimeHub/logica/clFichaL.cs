@@ -3,16 +3,17 @@ using Sena_TimeHub.entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Sena_TimeHub.logica
 {
     public class clFichaL
     {
         
-        public bool RegistrarFichaYUsuarios(string numeroFicha, DateTime fechaInicio, DateTime fechaFinal, string jornada, int idPrograma, DataTable usuarios)
+        public bool RegistrarFichaYUsuarios(string numeroFicha, DateTime fechaInicio, DateTime fechaFinal, string jornada, int idPrograma,int idSede, DataTable aprendices)
         {
            clFichaD oFicha = new clFichaD();    
-            return oFicha.RegistrarFicha(numeroFicha, fechaInicio, fechaFinal, jornada, idPrograma, usuarios);
+            return oFicha.RegistrarFicha(numeroFicha, fechaInicio, fechaFinal, jornada, idPrograma, idSede,  aprendices);
         }
         public DataTable CrearTablaUsuarios()
         {
@@ -22,8 +23,8 @@ namespace Sena_TimeHub.logica
             table.Columns.Add("tipoDocumento", typeof(string));
             table.Columns.Add("documento", typeof(string));
             table.Columns.Add("email", typeof(string));
-            table.Columns.Add("contraseña", typeof(string));
-            table.Columns.Add("idRol", typeof(int));
+           
+         
 
             return table;
         }
@@ -32,5 +33,11 @@ namespace Sena_TimeHub.logica
             clFichaD oFicha = new clFichaD();
             return oFicha.ObtenerProgramas();
         }
+        public List<clSedeE> obtenerSedes()
+        {
+            clFichaD oFicha = new clFichaD();
+            return oFicha.obtenerSede();
+        }
+        
     }
 }

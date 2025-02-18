@@ -85,7 +85,7 @@
                         if (confirm("¿Deseas cancelar esta clase?")) {
                             let motivo = prompt("Ingresa el motivo de la cancelación:");
                             if (motivo) {
-                                cancelarClase(clasesDelDia[0].idHorario, dateText, motivo);
+                                cancelarClase(info.event.id, info.event.startStr, motivo);
                             }
                         }
                     }
